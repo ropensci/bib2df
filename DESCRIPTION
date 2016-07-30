@@ -1,0 +1,13 @@
+Package: bib2df
+Type: Package
+Title: Parse a .bib-file to data.frame/data_frame
+Version: 0.1.0
+Author: Philipp Ottolinger
+Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
+Description: More about what it does (maybe more than one line)
+License: MIT
+LazyData: TRUE
+Imports:
+  dplyr,
+  plyr,
+  stringr
