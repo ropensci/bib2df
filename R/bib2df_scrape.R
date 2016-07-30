@@ -35,6 +35,7 @@ bib2df_scrape <- function(bib, matches) {
     items <- lapply(items, function(x) sapply(x, as.character))
     items <- lapply(items, function(x) data.frame(x, stringsAsFactors = F))
     items <- lapply(items, function(x) {colnames(x) <- x[1,]; x <- x[-1,]; return(x)})
+    df <- rbind.fill(items)
     df <- as_data_frame(df)
   }
   return(df)
