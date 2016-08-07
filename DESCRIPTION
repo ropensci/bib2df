@@ -8,6 +8,7 @@ Description: More about what it does (maybe more than one line)
 License: MIT
 LazyData: TRUE
 Imports:
-  dplyr,
-  plyr,
-  stringr
+    dplyr,
+    plyr,
+    stringr
+RoxygenNote: 5.0.1
