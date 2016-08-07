@@ -1,3 +1,4 @@
+#' export bib2df_tidy
 bib2df_tidy <- function(bib) {
   if ("Author" %in% colnames(bib)) {
     bib$Author <- strsplit(bib$Author, " and ", fixed = T)

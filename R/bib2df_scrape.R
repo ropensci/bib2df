@@ -3,8 +3,10 @@
 #' @importFrom plyr rbind.fill
 #' @export bib2df_scrape
 bib2df_scrape <- function(bib, matches) {
-  from <- which(!is.na(str_match(bib,matches)))
-  to <- which(bib == "}")
+  from <- which(!is.na(str_match(bib,paste("@",matches, sep=""))))
+  #to <- which(bib == "}")
+  to <- which(!is.na(str_match(bib, "@")))
+  to <- c(to, length(bib))
   to <- sapply(from, function(x) min(to[to>x]))
   if (length(to) < 1) {
     break
@@ -22,7 +24,7 @@ bib2df_scrape <- function(bib, matches) {
     items <- data.frame(t(items), stringsAsFactors = F)
     colnames(items) <- items[1,]
     items <- items[-1,]
-    df <- as_data_frame(items)
+    df <- as_data_frame(items, validate = F)
   } else {
     raw <- mapply(function(x,y) return(bib[x:y]), x = from, y = to)
     raw <- lapply(raw, function(x) x[2:(length(x)-1)])
