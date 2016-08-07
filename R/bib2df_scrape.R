@@ -25,8 +25,8 @@ bib2df_scrape <- function(bib, matches) {
     categories <- lapply(raw, function(x) str_extract(x, ".+?(?==)"))
     categories <- lapply(categories, trimws)
     values <- lapply(raw, function(x) str_extract(x, "(?<==).*"))
-    values <- lapply(values, function(x) str_extract(x, "(?<=\\{).*"))
-    values <- lapply(values, function(x) str_extract(x, ".*(?=\\})"))
+    values <- lapply(values, function(x) str_extract(x, "(?<=[\"\\{]).*"))
+    values <- lapply(values, function(x) str_extract(x, ".*(?=[\"\\}])"))
     values <- lapply(values, trimws)
     items <- mapply(data.frame, categories, values, SIMPLIFY = F)
     items <- lapply(items, function(x) {names(x) <- c("Categories", "Values"); return(x)})
@@ -35,6 +35,7 @@ bib2df_scrape <- function(bib, matches) {
     items <- lapply(items, function(x) sapply(x, as.character))
     items <- lapply(items, function(x) data.frame(x, stringsAsFactors = F))
     items <- lapply(items, function(x) {colnames(x) <- x[1,]; x <- x[-1,]; return(x)})
+    items <- lapply(items, data.frame)
     df <- rbind.fill(items)
     df <- as_data_frame(df)
   }
