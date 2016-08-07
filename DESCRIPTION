@@ -1,11 +1,11 @@
 Package: bib2df
 Type: Package
-Title: Parse a .bib-file to data.frame/data_frame
+Title: Parse a BibTeX file to a tibble
 Version: 0.1.0
 Author: Philipp Ottolinger
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
-Description: More about what it does (maybe more than one line)
-License: MIT
+Description: Parse a BibTeX file to a tidy tibble to make it accessible for further analysis and visualization.
+License: GPL-3
 LazyData: TRUE
 Imports:
     dplyr,

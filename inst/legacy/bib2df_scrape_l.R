@@ -1,7 +1,3 @@
-#' @importFrom stringr str_extract
-#' @importFrom tibble as_data_frame
-#' @importFrom plyr rbind.fill
-#' @export bib2df_scrape
 bib2df_scrape <- function(bib, matches) {
   from <- which(!is.na(str_match(bib,paste("@",matches, sep=""))))
   #to <- which(bib == "}")
