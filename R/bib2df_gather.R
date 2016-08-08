@@ -7,7 +7,7 @@
 #' @importFrom stringr str_match
 #' @importFrom stringr str_extract
 #' @importFrom plyr rbind.fill
-#' @importFrom("stats", "complete.cases")
+#' @importFrom stats complete.cases
 #' @export bib2df_gather
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
