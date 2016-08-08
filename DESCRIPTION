@@ -1,7 +1,8 @@
 Package: bib2df
 Type: Package
 Title: Parse a BibTeX file to a tibble
-Version: 0.1.0
+Version: 0.1.1
+Date: 2016-08-08
 Author: Philipp Ottolinger
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Parse a BibTeX file to a tidy tibble to make it accessible for further analysis and visualization.
