@@ -22,11 +22,18 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 
 ``` r
 library(bib2df)
-# Read the supplied sample .bib file
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
-# Parse it to a tibble
 bib <- bib2df(path)
 bib
+#> # A tibble: 3 x 13
+#>       CATEGORY                                                   TITLE
+#>          <chr>                                                   <chr>
+#> 1      ARTICLE             Do Conventions Need to Be Common Knowledge?
+#> 2         BOOK                                 A Course in Game Theory
+#> 3 INCOLLECTION The Role of Common Knowledge Assumptions in Game Theory
+#> # ... with 11 more variables: AUTHOR <list>, JOURNAL <chr>, YEAR <dbl>,
+#> #   NUMBER <chr>, PAGES <chr>, VOLUME <chr>, PUBLISHER <chr>,
+#> #   BOOKTITLE <chr>, ADDRESS <chr>, CHAPTER <chr>, EDITOR <list>
 ```
 
 Installation
@@ -36,4 +43,4 @@ The latest version of `bib2df` can be installed from GitHub using `devtools::ins
 
     devtools::install_github("ottlngr/bib2df")
 
-A CRAN release is in the works.
+A **CRAN** release is in the works.
