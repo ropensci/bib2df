@@ -23,6 +23,7 @@ bib2df_gather <- function(bib) {
     categories <- lapply(items, function(x) str_extract(x, ".+?(?==)"))
     categories <- lapply(categories, trimws)
     values <- lapply(items, function(x) str_extract(x, "(?<==).*"))
+
     values <- lapply(values, function(x) str_extract(x, "(?![\"\\{\\s]).*"))
 
     values <- lapply(values, function(x) gsub("?(^[\\{\"])", "", x))
