@@ -26,4 +26,3 @@ bib
 \author{
 Philipp Ottolinger
 }
-
