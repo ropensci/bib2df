@@ -13,7 +13,8 @@ LazyData: TRUE
 Imports:
     dplyr,
     plyr,
-    stringr
+    stringr,
+    humaniformat
 Suggests:
     testthat
 RoxygenNote: 6.0.1
