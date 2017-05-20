@@ -6,6 +6,8 @@ Date: 2017-05-20
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"))
 Description: Parse a BibTeX file to a data.frame to make it accessible for further analysis and visualization.
+URL: https://github.com/ottlngr/bib2df
+BugReports: http://github.com/ottlngr/bib2df/issues
 License: GPL-3
 LazyData: TRUE
 Imports:
