@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df)
+
 `bib2df` - Parse a BibTeX file to a tibble
 ------------------------------------------
 
@@ -25,16 +27,21 @@ library(bib2df)
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
 bib
-#> # A tibble: 3 x 13
-#>       CATEGORY                                                   TITLE
-#>          <chr>                                                   <chr>
-#> 1      ARTICLE             Do Conventions Need to Be Common Knowledge?
-#> 2         BOOK                                 A Course in Game Theory
-#> 3 INCOLLECTION The Role of Common Knowledge Assumptions in Game Theory
-#> # ... with 11 more variables: AUTHOR <list>, JOURNAL <chr>, YEAR <dbl>,
-#> #   NUMBER <chr>, PAGES <chr>, VOLUME <chr>, PUBLISHER <chr>,
-#> #   BOOKTITLE <chr>, ADDRESS <chr>, CHAPTER <chr>, EDITOR <list>
+#> # A tibble: 3 × 26
+#>       CATEGORY              BIBTEXKEY  ADDRESS ANNOTE    AUTHOR
+#>          <chr>                  <chr>    <chr>  <chr>    <list>
+#> 1      ARTICLE            Binmore2008     <NA>   <NA> <chr [1]>
+#> 2         BOOK            Osborne1994     <NA>   <NA> <chr [2]>
+#> 3 INCOLLECTION BrandenburgerDekel1989 New York   <NA> <chr [2]>
+#> # ... with 21 more variables: BOOKTITLE <chr>, CHAPTER <chr>,
+#> #   CROSSREF <chr>, EDITION <chr>, EDITOR <list>, HOWPUBLISHED <chr>,
+#> #   INSTITUTION <chr>, JOURNAL <chr>, KEY <chr>, MONTH <chr>, NOTE <chr>,
+#> #   NUMBER <chr>, ORGANIZATION <chr>, PAGES <chr>, PUBLISHER <chr>,
+#> #   SCHOOL <chr>, SERIES <chr>, TITLE <chr>, TYPE <chr>, VOLUME <chr>,
+#> #   YEAR <dbl>
 ```
+
+The `df2bib()` function makes it possible to write this tibble back to disk, enabling programmatic manipulation of a .bib file.
 
 Installation
 ------------
