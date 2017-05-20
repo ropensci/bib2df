@@ -1,11 +1,11 @@
 Package: bib2df
 Type: Package
-Title: Parse a BibTeX File to a Tibble
+Title: Parse a BibTeX File to a data.frame
 Version: 0.1.2
-Date: 2017-05-19
+Date: 2017-05-20
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"))
-Description: Parse a BibTeX file to a tidy tibble (trimmed down version of data frame) to make it accessible for further analysis and visualization.
+Description: Parse a BibTeX file to a data.frame to make it accessible for further analysis and visualization.
 License: GPL-3
 LazyData: TRUE
 Imports:

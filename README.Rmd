@@ -12,9 +12,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df)[![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df)[![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html)
 
-## `bib2df` - Parse a BibTeX file to a tibble
+
+
+## `bib2df` - Parse a BibTeX file to a data.frame
 
 Everyone writing reports and articles with LaTeX has probably used BibTeX before. BibTeX is the de facto standard for reference management and grounds its functionality on a list of references stored in local text file. Depending on the reference type, several fields are necessary to define a reference properly. An exemplary BibTeX entry looks as follows:
 
@@ -30,9 +32,9 @@ Everyone writing reports and articles with LaTeX has probably used BibTeX before
 }
 ```
 
-## Parse the BibTeX file to a tibble
+## Parse the BibTeX file to a data.frame
 
-The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame`, or its revised version, the `tibble`. `bib2df` offers a straightforward framework to parse a BibTeX file to a `tibble`.
+The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` and `bib2df` offers a straightforward framework to parse a BibTeX file to a `data.frame`.
 
 
 ```{r}
@@ -42,7 +44,7 @@ bib <- bib2df(path)
 bib
 ```
 
-The `df2bib()` function makes it possible to write this tibble back to disk, enabling programmatic manipulation of a .bib file.
+The `df2bib()` function makes it possible to write this `data.frame` back to disk, enabling programmatic manipulation of a .bib file.
 
 ## Installation
 
