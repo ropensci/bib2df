@@ -2,20 +2,20 @@
 % Please edit documentation in R/df2bib.R
 \name{df2bib}
 \alias{df2bib}
-\title{Export a BibTeX tibble to a .bib file.}
+\title{Export a BibTeX data.frame to a .bib file.}
 \usage{
 df2bib(x, file)
 }
 \arguments{
-\item{file}{character, path to a .bib file.}
+\item{x}{data.frame, returned by \code{\link{df2bib}}.}
 
-\item{a}{tibble returned by \code{\link{df2bib}}.}
+\item{file}{character, path to a .bib file.}
 }
 \value{
 \code{file} as a character string, invisibly.
 }
 \description{
-The BibTeX file is read, parsed, tidied and written to a tibble.
+The BibTeX data.frame is written to a .bib file
 }
 \examples{
 path <- system.file("extdata", "biblio.bib", package = "bib2df")

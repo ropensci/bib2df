@@ -1,6 +1,6 @@
-#' @title Export a BibTeX tibble to a .bib file.
-#' @description The BibTeX file is read, parsed, tidied and written to a tibble.
-#' @param a tibble returned by \code{\link{df2bib}}.
+#' @title Export a BibTeX data.frame to a .bib file.
+#' @description The BibTeX data.frame is written to a .bib file
+#' @param x data.frame, returned by \code{\link{df2bib}}.
 #' @param file character, path to a .bib file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
@@ -13,7 +13,7 @@
 #' @export
 df2bib <- function(x, file) {
   capitalize <- function(string) {
-    paste0(substr(string, 1, 1), 
+    paste0(substr(string, 1, 1),
            tolower(substr(string, 2, nchar(string) )))
   }
   names(x) <- capitalize(names(x))
