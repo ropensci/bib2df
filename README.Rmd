@@ -40,6 +40,8 @@ bib <- bib2df(path)
 bib
 ```
 
+The `df2bib()` function makes it possible to write this tibble back to disk, enabling programmatic manipulation of a .bib file.
+
 ## Installation
 
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:

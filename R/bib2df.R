@@ -4,10 +4,11 @@
 #' @param file character, path to a .bib file.
 #' @return A tibble.
 #' @author Philipp Ottolinger
-#' @export bib2df
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
 #' bib2df(path)
+#' @seealso \code{\link{df2bib}}
+#' @export
 bib2df <- function(file) {
   bib <- bib2df_read(file)
   bib <- bib2df_gather(bib)

@@ -28,4 +28,3 @@ bib
 \author{
 Philipp Ottolinger
 }
-

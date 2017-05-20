@@ -26,4 +26,3 @@ bib <- bib2df_gather(bib)
 \author{
 Philipp Ottolinger
 }
-

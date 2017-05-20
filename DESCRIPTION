@@ -1,15 +1,17 @@
 Package: bib2df
 Type: Package
 Title: Parse a BibTeX File to a Tibble
-Version: 0.1.1
-Date: 2016-08-08
-Author: Philipp Ottolinger
-Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
-Description: Parse a BibTeX file to a tidy tibble (trimmed down version of data.frame) to make it accessible for further analysis and visualization.
+Version: 0.1.2
+Date: 2017-05-19
+Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
+             person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"))
+Description: Parse a BibTeX file to a tidy tibble (trimmed down version of data frame) to make it accessible for further analysis and visualization.
 License: GPL-3
 LazyData: TRUE
 Imports:
     dplyr,
     plyr,
     stringr
-RoxygenNote: 5.0.1
+Suggests:
+    testthat
+RoxygenNote: 6.0.1

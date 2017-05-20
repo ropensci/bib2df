@@ -22,7 +22,9 @@ Uses the internal \code{bib2df_read()}, \code{bib2df_gather()} and \code{bib2df_
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib2df(path)
 }
+\seealso{
+\code{\link{df2bib}}
+}
 \author{
 Philipp Ottolinger
 }
-
