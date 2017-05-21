@@ -4,12 +4,12 @@
 \alias{bib2df_tidy}
 \title{Tidy a bib2df \code{data.frame}..}
 \usage{
-bib2df_tidy(bib, separateNames = c(FALSE, TRUE))
+bib2df_tidy(bib, separate_names = c(FALSE, TRUE))
 }
 \arguments{
 \item{bib, }{resulting from \code{bib2df_gather()}.}
 
-\item{separateNames}{logical, should authors' and editors' names be separated into first and given name?}
+\item{separate_names}{logical, should authors' and editors' names be separated into first and given name?}
 }
 \value{
 A \code{data.frame}.

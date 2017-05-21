@@ -4,12 +4,12 @@
 \alias{bib2df}
 \title{Parse a BibTeX file to a \code{data.frame}..}
 \usage{
-bib2df(file, separateNames = c(FALSE, TRUE))
+bib2df(file, separate_names = c(FALSE, TRUE))
 }
 \arguments{
 \item{file}{character, path to a .bib file.}
 
-\item{separateNames}{logical, should authors' and editors' names be separated into first and given name?}
+\item{separate_names}{logical, should authors' and editors' names be separated into first and given name?}
 }
 \value{
 A \code{data.frame}.
