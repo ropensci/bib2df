@@ -2,18 +2,20 @@
 % Please edit documentation in R/bib2df_tidy.R
 \name{bib2df_tidy}
 \alias{bib2df_tidy}
-\title{Tidy a bib2df tibble.}
+\title{Tidy a bib2df \code{data.frame}..}
 \usage{
-bib2df_tidy(bib)
+bib2df_tidy(bib, separate_names = c(FALSE, TRUE))
 }
 \arguments{
 \item{bib, }{resulting from \code{bib2df_gather()}.}
+
+\item{separate_names}{logical, should authors' and editors' names be separated into first and given name?}
 }
 \value{
-A tibble.
+A \code{data.frame}.
 }
 \description{
-\code{bib2df_tidy()} aims to tidy a tibble resulting from \code{bib2df_gather()}.
+\code{bib2df_tidy()} aims to tidy a \code{data.frame}. resulting from \code{bib2df_gather()}.
 }
 \details{
 If multiple Authors or Editors are supplied, the respective character string is split up into a list. The year of publication is converted to \code{as.numeric()}. The \code{CATEGORY} column moves to the very left of the tibble.

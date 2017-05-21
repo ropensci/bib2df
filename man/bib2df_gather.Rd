@@ -10,10 +10,10 @@ bib2df_gather(bib)
 \item{bib, }{a character vector resulting from \code{bib2df_read()}.}
 }
 \value{
-A tibble.
+A \code{data.frame}.
 }
 \description{
-\code{bib2df_gather} parses a .bib file and returns each BibTeX-item as a row in a tibble.
+\code{bib2df_gather} parses a .bib file and returns each BibTeX-item as a row in a \code{data.frame}.
 }
 \details{
 \code{bib2df_gather} extracts the BibTeX entry types, fields and the respective values. Each item is presented as a row in a data_frame whereas the entry type (column \code{CATEGORY}) is added to each row.

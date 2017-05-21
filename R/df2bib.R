@@ -16,6 +16,16 @@ df2bib <- function(x, file) {
     paste0(substr(string, 1, 1),
            tolower(substr(string, 2, nchar(string) )))
   }
+  naReplace <- function(df) {
+    df[is.na(df)] <- ""
+    return(df)
+  }
+  if (class(x$AUTHOR[[1]]) == "data.frame") {
+    x$AUTHOR <- lapply(x$AUTHOR, naReplace)
+    x$AUTHOR <- lapply(x$AUTHOR, function(x) paste(x$last_name, ", ", x$first_name, " ", x$middle_name, sep = ""))
+    x$AUTHOR <- lapply(x$AUTHOR, trimws)
+  }
+
   names(x) <- capitalize(names(x))
   fields <- lapply(seq_len(nrow(x)), function(r) {
     rowfields <- rep(list(character(0)), ncol(x))
