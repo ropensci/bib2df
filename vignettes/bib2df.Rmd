@@ -1,0 +1,148 @@
+---
+title: "bib2df - Parse a BibTeX file to a data.frame"
+author: "Philipp Ottolinger"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## BibTeX
+
+BibTex is typically used together with LaTeX to manage references. The BibTex file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
+
+The resulting BibTeX file can tell much about the work you use it for, may it be an academic paper, a dissertation or any other report that at least partly appoints to the work of others. The average age of the refereced works might tell if one addresses to a current topic or if one digs into the history of a certain field. Does one cite many works of just a few authors or occurs every author at most once? The BibTeX file is definitely able to answer these questions.
+
+## Why bib2df?
+
+As mentioned above, BibTeX represents the entries as lists of named fields, some kind of similar to the `JSON` format. If you want to gain insights from your BibTex file using R, you will have to transform the data to fit into a more usual data structure. This data structure, speaking of R and especially the great packages of the `tidyverse` like `dplyr` and `ggplot2`, is the `data.frame`. `bib2df` does exactly this: It takes a BibTeX file and parses it into a `data.frame` so you can work with your bibliographic data just the way you do with other data.
+
+Given this `data.frame` you can manipulate entries in a familiar way and write the updated references back to a valid BibTex file. 
+
+## How to use
+
+### Install and load the package
+
+The latest stable version of `bib2df` can be installed from CRAN. After that load the package using the `library()` command.
+
+```{r}
+install.packages("bib2df", repos = "https://cran.rstudio.com/")
+library(bib2df)
+```
+
+### Parse the BibTeX file
+
+To parse a BibTeX file to a `data.frame` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, my advice is to download it to a temporary file. 
+
+```{r}
+bibtex <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
+t <- tempfile()
+download.file(bibtex, t)
+```
+
+You can now use `bib2df()` to parse the file.
+
+```{r, warning=FALSE}
+df <- bib2df(t)
+df
+```
+
+`bib2df()` returns a `data.frame` with each row representing one entry of the initial BibTeX file while the columns hold the data originally stored in the named fields. If a field was not present in a particular entry, the respective column gets the value `NA`. As some works can be the work of multiple authors or editors, these fields are converted to a list to avoid having the names of multiple persons concatenated to a single character string:
+
+```{r}
+head(df$AUTHOR)
+```
+
+The second argument of `bib2df()` is `separate_names` and calls, if `TRUE`, the functionality of the `humaniformat` package to automatically split persons' names into pieces:
+
+```{r}
+df <- bib2df(t, separate_names = TRUE)
+head(df$AUTHOR)
+```
+
+## Analyze and visualize your references
+
+Since the BibTeX entries are now converted to rows and columns in a `data.frame`, one can start to analyze and visualize the data with common tools like `ggplot2`, `dplyr` and `tidyr`.
+
+For example, one can ask which journal is cited most among the references
+
+```{r, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+df %>%
+  filter(!is.na(JOURNAL)) %>%
+  group_by(JOURNAL) %>%
+  summarize(n = n()) %>%
+  arrange(desc(n)) %>%
+  slice(1:3)
+```
+
+or what the median age of the cited works is:
+
+```{r}
+df %>%
+  mutate(age = 2017 - YEAR) %>%
+  summarize(m = median(age))
+```
+
+Also plotting is possible:
+
+```{r, fig.height = 5, fig.width = 7}
+df %>% 
+  select(YEAR, AUTHOR) %>% 
+  unnest() %>% 
+  ggplot() + 
+  aes(x = YEAR, y = reorder(full_name, desc(YEAR))) + 
+  geom_point()
+```
+
+
+## Manipulate your references
+
+Since all the BibTeX entries are represented by rows in a `data.frame`, all entries can be altered just like one would alter the value of a certain cell in a `data.frame`. 
+
+One of the authors of the 10th reference in our file does not have his full first name:
+
+```{r}
+df$AUTHOR[[10]]
+```
+
+The 'E.' in 'E. Dekel' is for Eddie, so lets change the value of that field:
+
+```{r}
+df$AUTHOR[[10]]$first_name[2] <- "Eddie"
+df$AUTHOR[[10]]$full_name[2] <- "Eddie Dekel"
+
+df$AUTHOR[[10]]
+```
+
+
+## Write back to BibTex
+
+Especially when single values of the parsed BibTeX file were changed it is useful to write the parsed `data.frame` back to a valid BibTeX file one can use in combination with LaTeX. Just like `bib2df()` parses a BibTeX file, `df2bib()` writes a BibTeX file:
+
+```{r}
+newFile <- tempfile()
+df2bib(df, file = newFile)
+```
+
+The just written BibTeX file of course contains the values, we just changed in the `data.frame`:
+
+```
+@Incollection{BrandenburgerDekel1989,
+  Address = {New York},
+  Author = {Brandenburger, Adam and Dekel, Eddie},
+  Booktitle = {The Economics of Missing Markets, Information and Games},
+  Chapter = {3},
+  Pages = {46 - 61},
+  Publisher = {Oxford University Press},
+  Title = {The Role of Common Knowledge Assumptions in Game Theory},
+  Year = {1989}
+}
+```
+
+
