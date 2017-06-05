@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df)[![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df)[![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df)[![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df)[![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html)[![codecov](https://codecov.io/gh/ottlngr/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ottlngr/bib2df)
 
 `bib2df` - Parse a BibTeX file to a data.frame
 ----------------------------------------------
