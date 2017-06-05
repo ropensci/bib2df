@@ -19,6 +19,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    tidyr
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
