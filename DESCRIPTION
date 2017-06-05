@@ -18,6 +18,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
