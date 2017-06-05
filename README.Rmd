@@ -59,3 +59,7 @@ Version 0.1.1 is now available on **CRAN**:
 ```
 install.packages("bib2df")
 ```
+
+## Comunity Guidelines
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

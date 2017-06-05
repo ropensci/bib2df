@@ -6,3 +6,4 @@ cran-comments.md
 ^README\.md$
 ^\.travis\.yml$
 ^NEWS\.md$
+^CONDUCT\.md$

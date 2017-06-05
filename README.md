@@ -26,6 +26,10 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 library(bib2df)
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
+#> Warning in if (separate_names) {: Bedingung hat Länge > 1 und nur das erste
+#> Element wird benutzt
+#> Warning in if (separate_names) {: Bedingung hat Länge > 1 und nur das erste
+#> Element wird benutzt
 bib
 #> # A tibble: 3 × 26
 #>       CATEGORY              BIBTEXKEY  ADDRESS ANNOTE    AUTHOR
@@ -53,3 +57,8 @@ The latest version of `bib2df` can be installed from GitHub using `devtools::ins
 Version 0.1.1 is now available on **CRAN**:
 
     install.packages("bib2df")
+
+Comunity Guidelines
+-------------------
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
