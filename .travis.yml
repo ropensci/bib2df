@@ -5,6 +5,6 @@ sudo: false
 cache: packages
 
 r_github_packages:
-  - covr
+  - jimhester/covr
 after_success:
   - Rscript -e 'covr::codecov()'
