@@ -26,10 +26,6 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 library(bib2df)
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
-#> Warning in if (separate_names) {: Bedingung hat Länge > 1 und nur das erste
-#> Element wird benutzt
-#> Warning in if (separate_names) {: Bedingung hat Länge > 1 und nur das erste
-#> Element wird benutzt
 bib
 #> # A tibble: 3 × 26
 #>       CATEGORY              BIBTEXKEY  ADDRESS ANNOTE    AUTHOR

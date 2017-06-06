@@ -39,7 +39,7 @@ Everyone writing reports and articles with LaTeX has probably used BibTeX before
 The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` and `bib2df` offers a straightforward framework to parse a BibTeX file to a `data.frame`.
 
 
-```{r}
+```{r, warning=FALSE}
 library(bib2df)
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
