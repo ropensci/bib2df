@@ -50,7 +50,7 @@ The latest version of `bib2df` can be installed from GitHub using `devtools::ins
 
     devtools::install_github("ottlngr/bib2df")
 
-Version 0.1.1 is now available on **CRAN**:
+Version 0.2 is now available on **CRAN**:
 
     install.packages("bib2df")
 
