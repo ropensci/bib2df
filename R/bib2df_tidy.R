@@ -7,7 +7,9 @@
 #' @return A \code{data.frame}.
 #' @export bib2df_tidy
 #' @import dplyr
-#' @import humaniformat
+#' @importFrom humaniformat format_reverse
+#' @importFrom humaniformat format_period
+#' @importFrom humaniformat parse_names
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
 #' bib <- bib2df_read(path)
@@ -18,16 +20,22 @@ bib2df_tidy <- function(bib, separate_names = c(FALSE, TRUE)) {
   AUTHOR <- EDITOR <- YEAR <- CATEGORY <- NULL
   if ("AUTHOR" %in% colnames(bib)) {
     bib <- bib %>%
-      mutate(AUTHOR = strsplit(AUTHOR, " and ", fixed = T))
+      mutate(AUTHOR = strsplit(AUTHOR, " and ", fixed = TRUE))
     if (separate_names) {
-      bib$AUTHOR <- lapply(bib$AUTHOR, function(x) x %>% format_reverse() %>% format_period() %>% parse_names())
+      bib$AUTHOR <- lapply(bib$AUTHOR, function(x) x %>%
+                             format_reverse() %>%
+                             format_period() %>%
+                             parse_names())
     }
   }
   if ("EDITOR" %in% colnames(bib)) {
     bib <- bib %>%
-      mutate(EDITOR = strsplit(EDITOR, " and ", fixed = T))
+      mutate(EDITOR = strsplit(EDITOR, " and ", fixed = TRUE))
     if (separate_names) {
-      bib$EDITOR <- lapply(bib$EDITOR, function(x) x %>% format_reverse() %>% format_period() %>% parse_names())
+      bib$EDITOR <- lapply(bib$EDITOR, function(x) x %>%
+                             format_reverse() %>%
+                             format_period() %>%
+                             parse_names())
     }
   }
   if ("YEAR" %in% colnames(bib)) {

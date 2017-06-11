@@ -38,7 +38,7 @@ bib2df_gather <- function(bib) {
   items <- mapply(function(x,y) rbind(x, c("CATEGORY", y)), x = items, y = fields)
   items <- lapply(items, t)
   items <- lapply(items, function(x) { colnames(x) <- x[1,]; x <- x[-1,]; return(x) })
-  items <- lapply(items, function(x) {x <- t(x); x <- data.frame(x, stringsAsFactors = F); return(x) } )
+  items <- lapply(items, function(x) {x <- t(x); x <- data.frame(x, stringsAsFactors = FALSE); return(x) } )
   dat <- rbind.fill(c(list(empty), items))
   dat <- as_data_frame(dat)
   dat$BIBTEXKEY <- unlist(keys)
