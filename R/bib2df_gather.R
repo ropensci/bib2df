@@ -20,25 +20,84 @@ bib2df_gather <- function(bib) {
     return(empty)
   }
   itemslist <- mapply(function(x,y) return(bib[x:y]), x = from, y = to - 1)
-  keys <- lapply(itemslist, function(x) str_extract(x[1], "(?<=@\\w{1,50}\\{)((.*)){1}(?=,)"))
-  fields <- lapply(itemslist, function(x) str_extract(x[1], "(?<=@).*(?=\\{)"))
+  keys <- lapply(itemslist,
+                 function(x) {
+                   str_extract(x[1], "(?<=@\\w{1,50}\\{)((.*)){1}(?=,)")
+                 }
+  )
+  fields <- lapply(itemslist,
+                   function(x) {
+                     str_extract(x[1], "(?<=@).*(?=\\{)")
+                   }
+  )
   fields <- lapply(fields, toupper)
-  categories <- lapply(itemslist, function(x) str_extract(x, ".+?(?==)"))
+  categories <- lapply(itemslist,
+                       function(x) {
+                         str_extract(x, ".+?(?==)")
+                       }
+  )
   categories <- lapply(categories, trimws)
-  values <- lapply(itemslist, function(x) str_extract(x, "(?<==).*"))
-  values <- lapply(values, function(x) str_extract(x, "(?![\"\\{\\s]).*"))
-  values <- lapply(values, function(x) gsub("?(^[\\{\"])", "", x))
-  values <- lapply(values, function(x) gsub("?([\\}\"]\\,$)", "", x))
-  values <- lapply(values, function(x) gsub("?([\\}\"]$)", "", x))
-  values <- lapply(values, function(x) gsub("?(\\,$)", "", x))
+  values <- lapply(itemslist,
+                   function(x) {
+                     str_extract(x, "(?<==).*")
+                   }
+  )
+  values <- lapply(values,
+                   function(x) {
+                     str_extract(x, "(?![\"\\{\\s]).*")
+                   }
+  )
+  values <- lapply(values,
+                   function(x) {
+                     gsub("?(^[\\{\"])", "", x)
+                   }
+  )
+  values <- lapply(values,
+                   function(x) {
+                     gsub("?([\\}\"]\\,$)", "", x)
+                   }
+  )
+  values <- lapply(values,
+                   function(x) {
+                     gsub("?([\\}\"]$)", "", x)
+                   }
+  )
+  values <- lapply(values,
+                   function(x) {
+                     gsub("?(\\,$)", "", x)
+                   }
+  )
   values <- lapply(values, trimws)
   items <- mapply(cbind, categories, values)
-  items <- lapply(items, function(x) x <- cbind(toupper(x[,1]), x[,2]))
-  items <- lapply(items, function(x) x[complete.cases(x),])
-  items <- mapply(function(x,y) rbind(x, c("CATEGORY", y)), x = items, y = fields)
+  items <- lapply(items,
+                  function(x) {
+                    x <- cbind(toupper(x[,1]), x[,2])
+                  }
+  )
+  items <- lapply(items,
+                  function(x) {
+                    x[complete.cases(x),]
+                  }
+  )
+  items <- mapply(function(x,y) {
+    rbind(x, c("CATEGORY", y))
+    },
+    x = items, y = fields)
   items <- lapply(items, t)
-  items <- lapply(items, function(x) { colnames(x) <- x[1,]; x <- x[-1,]; return(x) })
-  items <- lapply(items, function(x) {x <- t(x); x <- data.frame(x, stringsAsFactors = FALSE); return(x) } )
+  items <- lapply(items,
+                  function(x) {
+                    colnames(x) <- x[1,]
+                    x <- x[-1,]
+                    return(x)
+                  }
+  )
+  items <- lapply(items,
+                  function(x) {
+                    x <- t(x)
+                    x <- data.frame(x, stringsAsFactors = FALSE)
+                    return(x)
+                  }
+  )
   dat <- rbind.fill(c(list(empty), items))
   dat <- as_data_frame(dat)
   dat$BIBTEXKEY <- unlist(keys)
