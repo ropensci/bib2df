@@ -22,7 +22,16 @@ df2bib <- function(x, file) {
   }
   if (class(x$AUTHOR[[1]]) == "data.frame") {
     x$AUTHOR <- lapply(x$AUTHOR, naReplace)
-    x$AUTHOR <- lapply(x$AUTHOR, function(x) paste(x$last_name, ", ", x$first_name, " ", x$middle_name, sep = ""))
+    x$AUTHOR <- lapply(x$AUTHOR,
+                       function(x) {
+                         paste(x$last_name,
+                               ", ",
+                               x$first_name,
+                               " ",
+                               x$middle_name,
+                               sep = "")
+                         }
+                       )
     x$AUTHOR <- lapply(x$AUTHOR, trimws)
   }
 
@@ -45,8 +54,21 @@ df2bib <- function(x, file) {
     }
     rowfields <- rowfields[lengths(rowfields) > 0]
     rowfields <- rowfields[!names(rowfields) %in% c("Category", "Bibtexkey")]
-    paste0("  ", names(rowfields), " = {", unname(unlist(rowfields)), "}", collapse = ",\n")
+    paste0("  ",
+           names(rowfields),
+           " = {",
+           unname(unlist(rowfields)),
+           "}",
+           collapse = ",\n")
   })
-  cat(paste0("@", capitalize(x$Category), "{", x$Bibtexkey, ",\n", unlist(fields), "\n}\n", collapse = "\n\n"), file = file)
+  cat(paste0("@",
+             capitalize(x$Category),
+             "{",
+             x$Bibtexkey,
+             ",\n",
+             unlist(fields),
+             "\n}\n",
+             collapse = "\n\n"),
+      file = file)
   invisible(file)
 }
