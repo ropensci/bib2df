@@ -1,21 +1,8 @@
-#' @title Tidy a bib2df \code{data.frame}..
-#' @description \code{bib2df_tidy()} aims to tidy a \code{data.frame}. resulting from \code{bib2df_gather()}.
-#' @details If multiple Authors or Editors are supplied, the respective character string is split up into a list. The year of publication is converted to \code{as.numeric()}. The \code{CATEGORY} column moves to the very left of the tibble.
-#' @param bib, resulting from \code{bib2df_gather()}.
-#' @param separate_names logical, should authors' and editors' names be separated into first and given name?
-#' @author Philipp Ottolinger
-#' @return A \code{data.frame}.
-#' @export bib2df_tidy
 #' @import dplyr
 #' @importFrom humaniformat format_reverse
 #' @importFrom humaniformat format_period
 #' @importFrom humaniformat parse_names
-#' @examples
-#' path <- system.file("extdata", "biblio.bib", package = "bib2df")
-#' bib <- bib2df_read(path)
-#' bib <- bib2df_gather(bib)
-#' bib <- bib2df_tidy(bib)
-#' bib
+
 bib2df_tidy <- function(bib, separate_names = c(FALSE, TRUE)) {
   AUTHOR <- EDITOR <- YEAR <- CATEGORY <- NULL
   if ("AUTHOR" %in% colnames(bib)) {

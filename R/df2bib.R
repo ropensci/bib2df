@@ -1,6 +1,6 @@
-#' @title Export a BibTeX data.frame to a .bib file.
-#' @description The BibTeX data.frame is written to a .bib file
-#' @param x data.frame, returned by \code{\link{df2bib}}.
+#' @title Export a BibTeX \code{data.frame} to a .bib file
+#' @description The BibTeX \code{data.frame} is written to a .bib file
+#' @param x \code{data.frame}, returned by \code{\link{df2bib}}.
 #' @param file character, path to a .bib file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
@@ -16,12 +16,12 @@ df2bib <- function(x, file) {
     paste0(substr(string, 1, 1),
            tolower(substr(string, 2, nchar(string) )))
   }
-  naReplace <- function(df) {
+  na_replace <- function(df) {
     df[is.na(df)] <- ""
     return(df)
   }
   if (class(x$AUTHOR[[1]]) == "data.frame") {
-    x$AUTHOR <- lapply(x$AUTHOR, naReplace)
+    x$AUTHOR <- lapply(x$AUTHOR, na_replace)
     x$AUTHOR <- lapply(x$AUTHOR,
                        function(x) {
                          paste(x$last_name,

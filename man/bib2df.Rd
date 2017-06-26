@@ -2,9 +2,9 @@
 % Please edit documentation in R/bib2df.R
 \name{bib2df}
 \alias{bib2df}
-\title{Parse a BibTeX file to a \code{data.frame}..}
+\title{Parse a BibTeX file to a \code{data.frame}}
 \usage{
-bib2df(file, separate_names = c(FALSE, TRUE))
+bib2df(file, separate_names = FALSE)
 }
 \arguments{
 \item{file}{character, path to a .bib file.}
@@ -15,10 +15,10 @@ bib2df(file, separate_names = c(FALSE, TRUE))
 A \code{data.frame}.
 }
 \description{
-The BibTeX file is read, parsed, tidied and written to a \code{data.frame}..
+The BibTeX file is read, parsed, tidied and written to a \code{data.frame}
 }
 \details{
-Uses the internal \code{bib2df_read()}, \code{bib2df_gather()} and \code{bib2df_tidy()}. No magic, just a wrapper.
+For simplicity \code{bib2df()} unifies the reading, parsing and tidying of a BibTeX file while being aware of a standardized output format, different BibTeX styles and missing values in the BibTeX file.
 }
 \examples{
 path <- system.file("extdata", "biblio.bib", package = "bib2df")

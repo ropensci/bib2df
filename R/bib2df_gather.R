@@ -1,25 +1,15 @@
-#' @title Parse a .bib file.
-#' @description \code{bib2df_gather} parses a .bib file and returns each BibTeX-item as a row in a \code{data.frame}.
-#' @details \code{bib2df_gather} extracts the BibTeX entry types, fields and the respective values. Each item is presented as a row in a data_frame whereas the entry type (column \code{CATEGORY}) is added to each row.
-#' @param bib, a character vector resulting from \code{bib2df_read()}.
-#' @return A \code{data.frame}.
-#' @author Philipp Ottolinger
 #' @importFrom stringr str_match
 #' @importFrom stringr str_extract
-#' @importFrom plyr rbind.fill
+#' @importFrom dplyr bind_rows
 #' @importFrom stats complete.cases
-#' @export bib2df_gather
-#' @examples
-#' path <- system.file("extdata", "biblio.bib", package = "bib2df")
-#' bib <- bib2df_read(path)
-#' bib <- bib2df_gather(bib)
+
 bib2df_gather <- function(bib) {
   from <- which(!is.na(str_match(bib, "@")))
   to  <- c(from[-1], length(bib))
   if (!length(from)) {
     return(empty)
   }
-  itemslist <- mapply(function(x,y) return(bib[x:y]), x = from, y = to - 1)
+  itemslist <- mapply(function(x, y) return(bib[x:y]), x = from, y = to - 1)
   keys <- lapply(itemslist,
                  function(x) {
                    str_extract(x[1], "(?<=@\\w{1,50}\\{)((.*)){1}(?=,)")
@@ -71,23 +61,23 @@ bib2df_gather <- function(bib) {
   items <- mapply(cbind, categories, values)
   items <- lapply(items,
                   function(x) {
-                    x <- cbind(toupper(x[,1]), x[,2])
+                    x <- cbind(toupper(x[, 1]), x[, 2])
                   }
   )
   items <- lapply(items,
                   function(x) {
-                    x[complete.cases(x),]
+                    x[complete.cases(x), ]
                   }
   )
-  items <- mapply(function(x,y) {
+  items <- mapply(function(x, y) {
     rbind(x, c("CATEGORY", y))
     },
     x = items, y = fields)
   items <- lapply(items, t)
   items <- lapply(items,
                   function(x) {
-                    colnames(x) <- x[1,]
-                    x <- x[-1,]
+                    colnames(x) <- x[1, ]
+                    x <- x[-1, ]
                     return(x)
                   }
   )
@@ -98,7 +88,7 @@ bib2df_gather <- function(bib) {
                     return(x)
                   }
   )
-  dat <- rbind.fill(c(list(empty), items))
+  dat <- bind_rows(c(list(empty), items))
   dat <- as_data_frame(dat)
   dat$BIBTEXKEY <- unlist(keys)
   dat

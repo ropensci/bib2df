@@ -4,7 +4,7 @@ author: "Philipp Ottolinger"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{bib2df}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -34,18 +34,12 @@ library(bib2df)
 
 ### Parse the BibTeX file
 
-To parse a BibTeX file to a `data.frame` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, my advice is to download it to a temporary file. 
+To parse a BibTeX file to a `data.frame` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, use the URL as the path. 
 
 ```{r}
-bibtex <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
-t <- tempfile()
-download.file(bibtex, t)
-```
+url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
 
-You can now use `bib2df()` to parse the file.
-
-```{r, warning=FALSE}
-df <- bib2df(t)
+df <- bib2df(url)
 df
 ```
 
@@ -55,10 +49,10 @@ df
 head(df$AUTHOR)
 ```
 
-The second argument of `bib2df()` is `separate_names` and calls, if `TRUE`, the functionality of the `humaniformat` package to automatically split persons' names into pieces:
+The second argument of `bib2df()` is `separate_names` and calls, if `TRUE`, the functionality of the `humaniformat` [^1] package to automatically split persons' names into pieces:
 
 ```{r}
-df <- bib2df(t, separate_names = TRUE)
+df <- bib2df(url, separate_names = TRUE)
 head(df$AUTHOR)
 ```
 
@@ -145,4 +139,4 @@ The just written BibTeX file of course contains the values, we just changed in t
 }
 ```
 
-
+[^1]: <https://cran.r-project.org/web/packages/humaniformat/index.html>

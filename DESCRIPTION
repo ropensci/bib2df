@@ -1,7 +1,7 @@
 Package: bib2df
 Type: Package
 Title: Parse a BibTeX File to a data.frame
-Version: 0.2
+Version: 0.2.1
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"),
              person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"))
@@ -12,7 +12,6 @@ License: GPL-3
 LazyData: TRUE
 Imports:
     dplyr,
-    plyr,
     stringr,
     humaniformat
 Suggests:

@@ -19,4 +19,3 @@ test_that("df2bib() works", {
   expect_true(file.exists(df2bib(bib, bib2 <- tempfile())))
   expect_true(identical(bib, bib2df(bib2)))
 })
-
