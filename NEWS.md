@@ -1,6 +1,8 @@
 # bib2df 0.2.1
 
-* 
+* Changes due to the ropensci review process:
+** Improved formatting
+** removed exports of internal functions
 
 
 # bib2df 0.2
