@@ -2,7 +2,9 @@
 
 * Changes due to the ropensci review process:
 ** Improved formatting
-** removed exports of internal functions
+** Removed exports of internal functions
+** Improved vignette
+
 
 
 # bib2df 0.2
