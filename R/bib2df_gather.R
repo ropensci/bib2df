@@ -27,6 +27,13 @@ bib2df_gather <- function(bib) {
                        }
   )
   categories <- lapply(categories, trimws)
+
+  dupl <- sum(unlist(lapply(categories, function(x) sum(duplicated(x[!is.na(x)])))))
+
+  if (dupl > 0) {
+    message("Some BibTeX entries may have been dropped. Review the .bib file and make sure every single entry starts with a '@'.")
+  }
+
   values <- lapply(itemslist,
                    function(x) {
                      str_extract(x, "(?<==).*")
