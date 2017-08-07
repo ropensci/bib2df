@@ -13,14 +13,7 @@
 #' @seealso \code{\link{bib2df}}
 #' @export
 df2bib <- function(x, file) {
-  capitalize <- function(string) {
-    paste0(substr(string, 1, 1),
-           tolower(substr(string, 2, nchar(string) )))
-  }
-  na_replace <- function(df) {
-    df[is.na(df)] <- ""
-    return(df)
-  }
+
   if (class(x$AUTHOR[[1]]) == "data.frame") {
     x$AUTHOR <- lapply(x$AUTHOR, na_replace)
     x$AUTHOR <- lapply(x$AUTHOR,
