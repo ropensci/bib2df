@@ -1,3 +1,11 @@
+#bib2df 0.2.2
+
+* Changes due to the ropensci review process:
+** Improved behavior on malformed .bib files and entries
+** Improved behavior on type conversion
+** `df2bib()` is now able to append to an existing file
+** Minor changes in documentation and vignette
+
 # bib2df 0.2.1
 
 * Changes due to the ropensci review process:
