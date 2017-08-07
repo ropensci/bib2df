@@ -31,7 +31,7 @@ bib2df_gather <- function(bib) {
   dupl <- sum(unlist(lapply(categories, function(x) sum(duplicated(x[!is.na(x)])))))
 
   if (dupl > 0) {
-    message("Some BibTeX entries may have been dropped. Review the .bib file and make sure every single entry starts with a '@'.")
+    message("Some BibTeX entries may have been dropped. The result could be malformed. Review the .bib file and make sure every single entry starts with a '@'.")
   }
 
   values <- lapply(itemslist,
