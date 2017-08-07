@@ -4,6 +4,7 @@
 #' @param file character, path to a .bib file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
+#' @references \code{\link{http://www.bibtex.org/Format/}}
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
 #' bib <- bib2df(path)

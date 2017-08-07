@@ -23,6 +23,9 @@ bib <- bib2df(path)
 df2bib(bib, bib2 <- tempfile())
 identical(bib, bib2df(bib2))
 }
+\references{
+\code{\link{http://www.bibtex.org/Format/}}
+}
 \seealso{
 \code{\link{bib2df}}
 }
