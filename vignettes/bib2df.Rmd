@@ -9,6 +9,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE
+)
+```
+
 ## BibTeX
 
 BibTex is typically used together with LaTeX to manage references. The BibTex file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
@@ -28,7 +35,7 @@ Given this `data.frame` you can manipulate entries in a familiar way and write t
 The latest stable version of `bib2df` can be installed from CRAN. After that load the package using the `library()` command.
 
 ```{r}
-install.packages("bib2df", repos = "https://cran.rstudio.com/")
+#install.packages("bib2df", repos = "https://cran.rstudio.com/")
 library(bib2df)
 ```
 
