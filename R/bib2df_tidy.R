@@ -3,7 +3,7 @@
 #' @importFrom humaniformat format_period
 #' @importFrom humaniformat parse_names
 
-bib2df_tidy <- function(bib, separate_names = c(FALSE, TRUE)) {
+bib2df_tidy <- function(bib, separate_names = FALSE) {
   AUTHOR <- EDITOR <- YEAR <- CATEGORY <- NULL
   if ("AUTHOR" %in% colnames(bib)) {
     bib <- bib %>%
@@ -26,8 +26,12 @@ bib2df_tidy <- function(bib, separate_names = c(FALSE, TRUE)) {
     }
   }
   if ("YEAR" %in% colnames(bib)) {
-    bib <- bib %>%
-      mutate(YEAR = as.numeric(YEAR))
+    if (sum(is.na(as.numeric(bib$YEAR))) == 0) {
+      bib <- bib %>%
+        mutate(YEAR = as.numeric(YEAR))
+    } else {
+      message("Column `YEAR` contains character strings. No coercion to numeric applied.")
+    }
   }
   bib <- bib %>%
     select(CATEGORY, everything())
