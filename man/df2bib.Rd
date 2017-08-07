@@ -4,12 +4,14 @@
 \alias{df2bib}
 \title{Export a BibTeX \code{data.frame} to a .bib file}
 \usage{
-df2bib(x, file)
+df2bib(x, file, append = FALSE)
 }
 \arguments{
 \item{x}{\code{data.frame}, returned by \code{\link{df2bib}}.}
 
 \item{file}{character, path to a .bib file.}
+
+\item{append}{logical, if \code{TRUE} the \code{data.frame} will be appended to an existing file.}
 }
 \value{
 \code{file} as a character string, invisibly.

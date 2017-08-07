@@ -2,6 +2,7 @@
 #' @description The BibTeX \code{data.frame} is written to a .bib file
 #' @param x \code{data.frame}, returned by \code{\link{df2bib}}.
 #' @param file character, path to a .bib file.
+#' @param append logical, if \code{TRUE} the \code{data.frame} will be appended to an existing file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
 #' @references \code{\link{http://www.bibtex.org/Format/}}
@@ -12,7 +13,7 @@
 #' identical(bib, bib2df(bib2))
 #' @seealso \code{\link{bib2df}}
 #' @export
-df2bib <- function(x, file) {
+df2bib <- function(x, file, append = FALSE) {
 
   if(!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
@@ -70,6 +71,7 @@ df2bib <- function(x, file) {
              unlist(fields),
              "\n}\n",
              collapse = "\n\n"),
-      file = file)
+      file = file,
+      append = append)
   invisible(file)
 }
