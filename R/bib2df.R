@@ -3,7 +3,7 @@
 #' @details For simplicity \code{bib2df()} unifies the reading, parsing and tidying of a BibTeX file while being aware of a standardized output format, different BibTeX styles and missing values in the BibTeX file.
 #' @param file character, path to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
-#' @return A \code{data.frame}.
+#' @return A \code{tibble}.
 #' @author Philipp Ottolinger
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
