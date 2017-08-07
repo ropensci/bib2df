@@ -5,7 +5,7 @@
 #' @param append logical, if \code{TRUE} the \code{data.frame} will be appended to an existing file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
-#' @references \code{\link{http://www.bibtex.org/Format/}}
+#' @references \url{http://www.bibtex.org/Format/}
 #' @examples
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
 #' bib <- bib2df(path)
