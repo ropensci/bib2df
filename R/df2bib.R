@@ -14,6 +14,13 @@
 #' @export
 df2bib <- function(x, file) {
 
+  if(!is.character(file)) {
+    stop("Invalid file path: Non-character supplied.", call. = FALSE)
+  }
+  if (as.numeric(file.access(dirname(file), mode = 2)) != 0) {
+    stop("Invalid file path: File is not writeable.", call. = FALSE)
+  }
+
   if (class(x$AUTHOR[[1]]) == "data.frame") {
     x$AUTHOR <- lapply(x$AUTHOR, na_replace)
     x$AUTHOR <- lapply(x$AUTHOR,
