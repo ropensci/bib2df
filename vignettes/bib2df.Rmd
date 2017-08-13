@@ -63,6 +63,23 @@ df <- bib2df(url, separate_names = TRUE)
 head(df$AUTHOR)
 ```
 
+### Parsing multiple BibTex files
+
+Multiple BibTex files can be parsed using `lapply()`. The paths to the BibTex files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `data.frames`, which can be bound, e.g. using `bind_rows()`:
+
+```{r}
+paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://raw.githubusercontent.com/ottlngr/bib2df/master/inst/extdata/biblio.bib")
+
+x <- lapply(paths, bib2df)
+class(x)
+head(x)
+
+res <- dplyr::bind_rows(x)
+class(res)
+head(res)
+```
+
+
 ## Analyze and visualize your references
 
 Since the BibTeX entries are now converted to rows and columns in a `data.frame`, one can start to analyze and visualize the data with common tools like `ggplot2`, `dplyr` and `tidyr`.
@@ -145,5 +162,7 @@ The just written BibTeX file of course contains the values, we just changed in t
   Year = {1989}
 }
 ```
+
+To append BibTeX entries to an existing file use `append = TRUE` within `df2bib()`. 
 
 [^1]: <https://cran.r-project.org/web/packages/humaniformat/index.html>
