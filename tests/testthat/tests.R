@@ -22,3 +22,13 @@ test_that("df2bib() works", {
   expect_true(identical(bib, bib2df(bib2)))
   expect_true(identical(readChar(x <- df2bib(bib, tempfile()), 1), "@"))
 })
+
+test_that("capitalize() works", {
+  expect_true(capitalize("TEST") == "Test")
+  expect_true(capitalize("Test") == "Test")
+})
+
+test_that("na_replace() works", {
+  df <- data.frame(a = NA, b = 1)
+  expect_true(na_replace(df)$a[1] == "")
+})
