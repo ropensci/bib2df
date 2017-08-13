@@ -1,4 +1,4 @@
-#bib2df 0.2.2
+# bib2df 0.2.2
 
 * Changes due to the ropensci review process:
 ** Improved behavior on malformed .bib files and entries
