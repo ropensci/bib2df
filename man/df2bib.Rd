@@ -20,10 +20,16 @@ df2bib(x, file, append = FALSE)
 The BibTeX \code{data.frame} is written to a .bib file
 }
 \examples{
+# Read from .bib file:
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
-df2bib(bib, bib2 <- tempfile())
-identical(bib, bib2df(bib2))
+
+# Write to .bib file:
+bibFile <- tempfile()
+df2bib(bib, bibFile)
+
+# Use `append = TRUE` to add lines to an existing .bib file:
+df2bib(bib, bibFile, append = TRUE)
 }
 \references{
 \url{http://www.bibtex.org/Format/}
