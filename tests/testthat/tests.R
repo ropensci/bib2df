@@ -32,3 +32,9 @@ test_that("na_replace() works", {
   df <- data.frame(a = NA, b = 1)
   expect_true(na_replace(df)$a[1] == "")
 })
+
+test_that("df2bib() throws error messages", {
+  df <- data.frame()
+  expect_error(df2bib(df, 1234), "Invalid file path: Non-character supplied.", fixed = TRUE)
+  expect_error(df2bib(df, "/not/a/valid/file/location.bib"), "Invalid file path: File is not writeable.", fixed = TRUE)
+})
