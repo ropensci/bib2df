@@ -7,8 +7,14 @@
 #' @return A \code{tibble}.
 #' @author Philipp Ottolinger
 #' @examples
+#' # Read from .bib file:
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
-#' bib2df(path)
+#' bib <- bib2df(path)
+#' str(bib)
+#'
+#' # Read from .bib file and separate authors' and editors' names:
+#' bib <- bib2df(path, separate_names = TRUE)
+#' str(bib)
 #' @seealso \code{\link{df2bib}}
 #' @export
 bib2df <- function(file, separate_names = FALSE) {

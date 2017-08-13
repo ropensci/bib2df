@@ -23,8 +23,14 @@ For simplicity \code{bib2df()} unifies the reading, parsing and tidying of a Bib
 When \code{separate_names = TRUE}, the respective columns contain a \code{data.frame} for each row. When \code{FALSE}, the respective columns contain character strings.
 }
 \examples{
+# Read from .bib file:
 path <- system.file("extdata", "biblio.bib", package = "bib2df")
-bib2df(path)
+bib <- bib2df(path)
+str(bib)
+
+# Read from .bib file and separate authors' and editors' names:
+bib <- bib2df(path, separate_names = TRUE)
+str(bib)
 }
 \seealso{
 \code{\link{df2bib}}
