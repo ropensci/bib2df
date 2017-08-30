@@ -23,9 +23,7 @@ bib2df <- function(file, separate_names = FALSE) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
   if(grepl("http://|https://|www.", file)) {
-    if (GET(file)$status_code != 200) {
-      stop("Invalid URL: File is not readable.", call. = FALSE)
-    }
+    tryCatch(GET(file), error = function(e) stop("Invalid URL: File is not readable.", call. = FALSE))
   } else {
     if (as.numeric(file.access(file, mode = 4)) != 0) {
       stop("Invalid file path: File is not readable.", call. = FALSE)
