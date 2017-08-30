@@ -13,7 +13,8 @@ LazyData: TRUE
 Imports:
     dplyr,
     stringr,
-    humaniformat
+    humaniformat,
+    RCurl
 Suggests:
     testthat,
     knitr,

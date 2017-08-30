@@ -5,8 +5,8 @@
 #' @param file character, path or URL to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
 #' @return A \code{tibble}.
+#' @importFrom RCurl url.exists
 #' @author Philipp Ottolinger
-#' @import RCurl
 #' @examples
 #' # Read from .bib file:
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")

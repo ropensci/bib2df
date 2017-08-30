@@ -2,8 +2,8 @@
 
 export(bib2df)
 export(df2bib)
-import(RCurl)
 import(dplyr)
+importFrom(RCurl,url.exists)
 importFrom(dplyr,bind_rows)
 importFrom(humaniformat,format_period)
 importFrom(humaniformat,format_reverse)
