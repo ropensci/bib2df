@@ -6,6 +6,7 @@
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
 #' @return A \code{tibble}.
 #' @author Philipp Ottolinger
+#' @import RCurl
 #' @examples
 #' # Read from .bib file:
 #' path <- system.file("extdata", "biblio.bib", package = "bib2df")
@@ -23,7 +24,9 @@ bib2df <- function(file, separate_names = FALSE) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
   if(grepl("http://|https://|www.", file)) {
-    tryCatch(GET(file), error = function(e) stop("Invalid URL: File is not readable.", call. = FALSE))
+    if(!url.exists(file)) {
+      stop("Invalid URL: File is not readable.", call. = FALSE)
+    }
   } else {
     if (as.numeric(file.access(file, mode = 4)) != 0) {
       stop("Invalid file path: File is not readable.", call. = FALSE)
