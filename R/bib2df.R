@@ -18,6 +18,14 @@
 #' @seealso \code{\link{df2bib}}
 #' @export
 bib2df <- function(file, separate_names = FALSE) {
+
+  if(!is.character(file)) {
+    stop("Invalid file path: Non-character supplied.", call. = FALSE)
+  }
+  if (as.numeric(file.access(file, mode = 4)) != 0) {
+    stop("Invalid file path: File is not readable.", call. = FALSE)
+  }
+
   bib <- bib2df_read(file)
   bib <- bib2df_gather(bib)
   bib <- bib2df_tidy(bib, separate_names)
