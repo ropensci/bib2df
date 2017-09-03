@@ -21,7 +21,7 @@
 #' @export
 df2bib <- function(x, file, append = FALSE) {
 
-  if(!is.character(file)) {
+  if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
   if (as.numeric(file.access(dirname(file), mode = 2)) != 0) {

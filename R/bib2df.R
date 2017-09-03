@@ -20,11 +20,11 @@
 #' @export
 bib2df <- function(file, separate_names = FALSE) {
 
-  if(!is.character(file)) {
+  if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
-  if(grepl("http://|https://|www.", file)) {
-    if(http_error(file)) {
+  if (grepl("http://|https://|www.", file)) {
+    if (http_error(file)) {
       stop("Invalid URL: File is not readable.", call. = FALSE)
     }
   } else {
