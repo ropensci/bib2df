@@ -1,6 +1,7 @@
 #' @importFrom stringr str_match
 #' @importFrom stringr str_extract
 #' @importFrom dplyr bind_rows
+#' @importFrom dplyr as_data_frame
 #' @importFrom stats complete.cases
 
 bib2df_gather <- function(bib) {
