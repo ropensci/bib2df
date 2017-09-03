@@ -2,7 +2,7 @@
 % Please edit documentation in R/bib2df.R
 \name{bib2df}
 \alias{bib2df}
-\title{Parse a BibTeX file to a \code{data.frame}}
+\title{Parse a BibTeX file to a \code{tibble}}
 \usage{
 bib2df(file, separate_names = FALSE)
 }
@@ -15,7 +15,7 @@ bib2df(file, separate_names = FALSE)
 A \code{tibble}.
 }
 \description{
-The BibTeX file is read, parsed, tidied and written to a \code{data.frame}
+The BibTeX file is read, parsed, tidied and written to a \code{tibble}
 }
 \details{
 For simplicity \code{bib2df()} unifies the reading, parsing and tidying of a BibTeX file while being aware of a standardized output format, different BibTeX styles and missing values in the BibTeX file.

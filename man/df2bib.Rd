@@ -2,22 +2,22 @@
 % Please edit documentation in R/df2bib.R
 \name{df2bib}
 \alias{df2bib}
-\title{Export a BibTeX \code{data.frame} to a .bib file}
+\title{Export a BibTeX \code{tibble} to a .bib file}
 \usage{
 df2bib(x, file, append = FALSE)
 }
 \arguments{
-\item{x}{\code{data.frame}, returned by \code{\link{df2bib}}.}
+\item{x}{\code{tibble}, returned by \code{\link{df2bib}}.}
 
 \item{file}{character, path to a .bib file.}
 
-\item{append}{logical, if \code{TRUE} the \code{data.frame} will be appended to an existing file.}
+\item{append}{logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.}
 }
 \value{
 \code{file} as a character string, invisibly.
 }
 \description{
-The BibTeX \code{data.frame} is written to a .bib file
+The BibTeX \code{tibble} is written to a .bib file
 }
 \examples{
 # Read from .bib file:
