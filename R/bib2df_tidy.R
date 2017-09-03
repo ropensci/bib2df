@@ -1,4 +1,6 @@
-#' @import dplyr
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr mutate
+#' @importFrom dplyr select
 #' @importFrom humaniformat format_reverse
 #' @importFrom humaniformat format_period
 #' @importFrom humaniformat parse_names
@@ -30,7 +32,8 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
       bib <- bib %>%
         mutate(YEAR = as.numeric(YEAR))
     } else {
-      message("Column `YEAR` contains character strings. No coercion to numeric applied.")
+      message("Column `YEAR` contains character strings.
+              No coercion to numeric applied.")
     }
   }
   bib <- bib %>%
