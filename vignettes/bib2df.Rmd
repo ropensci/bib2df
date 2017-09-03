@@ -18,15 +18,15 @@ knitr::opts_chunk$set(
 
 ## BibTeX
 
-BibTex is typically used together with LaTeX to manage references. The BibTex file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
+BibTeX is typically used together with LaTeX to manage references. The BibTeX file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
 
-The resulting BibTeX file can tell much about the work you use it for, may it be an academic paper, a dissertation or any other report that at least partly appoints to the work of others. The average age of the refereced works might tell if one addresses to a current topic or if one digs into the history of a certain field. Does one cite many works of just a few authors or occurs every author at most once? The BibTeX file is definitely able to answer these questions.
+The resulting BibTeX file can tell much about the work you use it for, may it be an academic paper, a dissertation or any other report that at least partly appoints to the work of others. The average age of the referenced works might tell if one addresses to a current topic or if one digs into the history of a certain field. Does one cite many works of just a few authors or occurs every author at most once? The BibTeX file is definitely able to answer these questions.
 
 ## Why bib2df?
 
-As mentioned above, BibTeX represents the entries as lists of named fields, some kind of similar to the `JSON` format. If you want to gain insights from your BibTex file using R, you will have to transform the data to fit into a more usual data structure. Such a data structure, speaking of R,  is the `tibble`. `bib2df` does exactly this: It takes a BibTeX file and parses it into a `tibble` so you can work with your bibliographic data just the way you do with other data.
+As mentioned above, BibTeX represents the entries as lists of named fields, some kind of similar to the `JSON` format. If you want to gain insights from your BibTeX file using R, you will have to transform the data to fit into a more usual data structure. Such a data structure, speaking of R,  is the `tibble`. `bib2df` does exactly this: It takes a BibTeX file and parses it into a `tibble` so you can work with your bibliographic data just the way you do with other data.
 
-Given this `tibble` you can manipulate entries in a familiar way and write the updated references back to a valid BibTex file. 
+Given this `tibble` you can manipulate entries in a familiar way and write the updated references back to a valid BibTeX file. 
 
 ## How to use
 
@@ -65,7 +65,7 @@ head(df$AUTHOR)
 
 ### Parsing multiple BibTex files
 
-Multiple BibTex files can be parsed using `lapply()`. The paths to the BibTex files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `tibble`, which can be bound, e.g. using `bind_rows()`:
+Multiple BibTeX files can be parsed using `lapply()`. The paths to the BibTeX files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `tibble`, which can be bound, e.g. using `bind_rows()`:
 
 ```{r}
 paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://raw.githubusercontent.com/ottlngr/bib2df/master/inst/extdata/biblio.bib")
@@ -139,7 +139,7 @@ df$AUTHOR[[10]]
 ```
 
 
-## Write back to BibTex
+## Write back to BibTeX
 
 Especially when single values of the parsed BibTeX file were changed it is useful to write the parsed `tibble` back to a valid BibTeX file one can use in combination with LaTeX. Just like `bib2df()` parses a BibTeX file, `df2bib()` writes a BibTeX file:
 
