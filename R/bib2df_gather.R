@@ -110,6 +110,7 @@ bib2df_gather <- function(bib) {
 }
 
 empty <- data.frame(
+  CATEGORY = character(0L),
   BIBTEXKEY = character(0L),
   ADDRESS = character(0L),
   ANNOTE = character(0L),

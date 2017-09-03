@@ -42,3 +42,20 @@ test_that("df2bib() throws error messages", {
                "Invalid file path: File is not writeable.",
                fixed = TRUE)
 })
+
+test_that("bib2df() throws error messages", {
+  expect_error(bib2df(4),
+               "Invalid file path: Non-character supplied.",
+               fixed = TRUE)
+  expect_error(bib2df("/a/n/y/where/any.bib"),
+               "Invalid file path: File is not readable.",
+               fixed = TRUE)
+  expect_error(bib2df("https://www.ottlngr.de/data/x.bib"),
+               "Invalid URL: File is not readable.",
+               fixed = TRUE)
+})
+
+test_that("bib2df() returns 'empty' data.frame", {
+  write("", t <- tempfile())
+  expect_true(identical(bib2df(t), bib2df:::empty))
+})

@@ -6,6 +6,11 @@
 #' @importFrom humaniformat parse_names
 
 bib2df_tidy <- function(bib, separate_names = FALSE) {
+
+  if (dim(bib)[1] == 0) {
+    return(bib)
+  }
+
   AUTHOR <- EDITOR <- YEAR <- CATEGORY <- NULL
   if ("AUTHOR" %in% colnames(bib)) {
     bib <- bib %>%
