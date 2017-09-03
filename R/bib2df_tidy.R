@@ -1,4 +1,4 @@
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
 #' @importFrom humaniformat format_reverse
@@ -37,6 +37,6 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
     }
   }
   bib <- bib %>%
-    select(CATEGORY, everything())
+    select(CATEGORY, dplyr::everything())
   return(bib)
 }
