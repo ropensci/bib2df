@@ -14,7 +14,7 @@ Imports:
     dplyr,
     stringr,
     humaniformat,
-    RCurl
+    httr
 Suggests:
     testthat,
     knitr,
