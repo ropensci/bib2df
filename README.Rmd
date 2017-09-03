@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 
 
-## `bib2df` - Parse a BibTeX file to a data.frame
+## `bib2df` - Parse a BibTeX file to a tibble
 
 Everyone writing reports and articles with LaTeX has probably used BibTeX before. BibTeX is the de facto standard for reference management and grounds its functionality on a list of references stored in local text file. Depending on the reference type, several fields are necessary to define a reference properly. An exemplary BibTeX entry looks as follows:
 
@@ -34,9 +34,9 @@ Everyone writing reports and articles with LaTeX has probably used BibTeX before
 }
 ```
 
-## Parse the BibTeX file to a data.frame
+## Parse the BibTeX file to a tibble
 
-The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` and `bib2df` offers a straightforward framework to parse a BibTeX file to a `data.frame`.
+The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` (or `tibble`) and `bib2df` offers a straightforward framework to parse a BibTeX file to a `tibble`.
 
 
 ```{r, warning=FALSE}
@@ -46,7 +46,7 @@ bib <- bib2df(path)
 bib
 ```
 
-The `df2bib()` function makes it possible to write this `data.frame` back to disk, enabling programmatic manipulation of a .bib file.
+The `df2bib()` function makes it possible to write this `tibble` back to disk, enabling programmatic manipulation of a .bib file.
 
 ## Installation
 

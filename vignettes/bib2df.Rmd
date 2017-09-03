@@ -24,9 +24,9 @@ The resulting BibTeX file can tell much about the work you use it for, may it be
 
 ## Why bib2df?
 
-As mentioned above, BibTeX represents the entries as lists of named fields, some kind of similar to the `JSON` format. If you want to gain insights from your BibTex file using R, you will have to transform the data to fit into a more usual data structure. This data structure, speaking of R and especially the great packages of the `tidyverse` like `dplyr` and `ggplot2`, is the `data.frame`. `bib2df` does exactly this: It takes a BibTeX file and parses it into a `data.frame` so you can work with your bibliographic data just the way you do with other data.
+As mentioned above, BibTeX represents the entries as lists of named fields, some kind of similar to the `JSON` format. If you want to gain insights from your BibTex file using R, you will have to transform the data to fit into a more usual data structure. Such a data structure, speaking of R,  is the `tibble`. `bib2df` does exactly this: It takes a BibTeX file and parses it into a `tibble` so you can work with your bibliographic data just the way you do with other data.
 
-Given this `data.frame` you can manipulate entries in a familiar way and write the updated references back to a valid BibTex file. 
+Given this `tibble` you can manipulate entries in a familiar way and write the updated references back to a valid BibTex file. 
 
 ## How to use
 
@@ -41,7 +41,7 @@ library(bib2df)
 
 ### Parse the BibTeX file
 
-To parse a BibTeX file to a `data.frame` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, use the URL as the path. 
+To parse a BibTeX file to a `tibble` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, use the URL as the path. 
 
 ```{r}
 url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
@@ -50,7 +50,7 @@ df <- bib2df(url)
 df
 ```
 
-`bib2df()` returns a `data.frame` with each row representing one entry of the initial BibTeX file while the columns hold the data originally stored in the named fields. If a field was not present in a particular entry, the respective column gets the value `NA`. As some works can be the work of multiple authors or editors, these fields are converted to a list to avoid having the names of multiple persons concatenated to a single character string:
+`bib2df()` returns a `tibble` with each row representing one entry of the initial BibTeX file while the columns hold the data originally stored in the named fields. If a field was not present in a particular entry, the respective column gets the value `NA`. As some works can be the work of multiple authors or editors, these fields are converted to a list to avoid having the names of multiple persons concatenated to a single character string:
 
 ```{r}
 head(df$AUTHOR)
@@ -65,7 +65,7 @@ head(df$AUTHOR)
 
 ### Parsing multiple BibTex files
 
-Multiple BibTex files can be parsed using `lapply()`. The paths to the BibTex files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `data.frames`, which can be bound, e.g. using `bind_rows()`:
+Multiple BibTex files can be parsed using `lapply()`. The paths to the BibTex files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `tibble`, which can be bound, e.g. using `bind_rows()`:
 
 ```{r}
 paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://raw.githubusercontent.com/ottlngr/bib2df/master/inst/extdata/biblio.bib")
@@ -82,7 +82,7 @@ head(res)
 
 ## Analyze and visualize your references
 
-Since the BibTeX entries are now converted to rows and columns in a `data.frame`, one can start to analyze and visualize the data with common tools like `ggplot2`, `dplyr` and `tidyr`.
+Since the BibTeX entries are now converted to rows and columns in a `tibble`, one can start to analyze and visualize the data with common tools like `ggplot2`, `dplyr` and `tidyr`.
 
 For example, one can ask which journal is cited most among the references
 
@@ -121,7 +121,7 @@ df %>%
 
 ## Manipulate your references
 
-Since all the BibTeX entries are represented by rows in a `data.frame`, all entries can be altered just like one would alter the value of a certain cell in a `data.frame`. 
+Since all the BibTeX entries are represented by rows in a `tibble`, all entries can be altered just like one would alter the value of a certain cell in a `tibble`. 
 
 One of the authors of the 10th reference in our file does not have his full first name:
 
@@ -141,14 +141,14 @@ df$AUTHOR[[10]]
 
 ## Write back to BibTex
 
-Especially when single values of the parsed BibTeX file were changed it is useful to write the parsed `data.frame` back to a valid BibTeX file one can use in combination with LaTeX. Just like `bib2df()` parses a BibTeX file, `df2bib()` writes a BibTeX file:
+Especially when single values of the parsed BibTeX file were changed it is useful to write the parsed `tibble` back to a valid BibTeX file one can use in combination with LaTeX. Just like `bib2df()` parses a BibTeX file, `df2bib()` writes a BibTeX file:
 
 ```{r}
 newFile <- tempfile()
 df2bib(df, file = newFile)
 ```
 
-The just written BibTeX file of course contains the values, we just changed in the `data.frame`:
+The just written BibTeX file of course contains the values, we just changed in the `tibble`:
 
 ```
 @Incollection{BrandenburgerDekel1989,

@@ -1,8 +1,8 @@
-#' @title Export a BibTeX \code{data.frame} to a .bib file
-#' @description The BibTeX \code{data.frame} is written to a .bib file
-#' @param x \code{data.frame}, returned by \code{\link{df2bib}}.
+#' @title Export a BibTeX \code{tibble} to a .bib file
+#' @description The BibTeX \code{tibble} is written to a .bib file
+#' @param x \code{tibble}, returned by \code{\link{df2bib}}.
 #' @param file character, path to a .bib file.
-#' @param append logical, if \code{TRUE} the \code{data.frame} will be appended to an existing file.
+#' @param append logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
 #' @references \url{http://www.bibtex.org/Format/}
