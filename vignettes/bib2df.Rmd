@@ -121,7 +121,7 @@ df %>%
 
 ## Manipulate your references
 
-Since all the BibTeX entries are represented by rows in a `tibble`, all entries can be altered just like one would alter the value of a certain cell in a `tibble`. 
+Since all the BibTeX entries are represented by rows in a `tibble`, manipulating the BibTeX entries is now easily possible.
 
 One of the authors of the 10th reference in our file does not have his full first name:
 
