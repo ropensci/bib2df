@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r eval=FALSE}
+library(bib2df)
+```
+
 ## BibTeX
 
 BibTeX is typically used together with LaTeX to manage references. The BibTeX file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
@@ -29,15 +33,6 @@ As mentioned above, BibTeX represents the entries as lists of named fields, some
 Given this `tibble` you can manipulate entries in a familiar way and write the updated references back to a valid BibTeX file. 
 
 ## How to use
-
-### Install and load the package
-
-The latest stable version of `bib2df` can be installed from CRAN. After that load the package using the `library()` command.
-
-```{r}
-#install.packages("bib2df", repos = "https://cran.rstudio.com/")
-library(bib2df)
-```
 
 ### Parse the BibTeX file
 
