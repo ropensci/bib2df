@@ -15,11 +15,7 @@ knitr::opts_chunk$set(
   warning = FALSE
 )
 ```
-
-```{r eval=FALSE}
-library(bib2df)
-```
-
+ 
 ## BibTeX
 
 BibTeX is typically used together with LaTeX to manage references. The BibTeX file format is simple as it follows rather simple but strict rules and represents a reference's core data as a list of partly mandatory fields. 
@@ -37,6 +33,10 @@ Given this `tibble` you can manipulate entries in a familiar way and write the u
 ### Parse the BibTeX file
 
 To parse a BibTeX file to a `tibble` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, use the URL as the path. 
+
+```{r, echo=FALSE,message=FALSE}
+library(bib2df)
+```
 
 ```{r}
 url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
