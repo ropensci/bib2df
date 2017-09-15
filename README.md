@@ -48,7 +48,7 @@ Installation
 
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:
 
-    devtools::install_github("ottlngr/bib2df")
+    devtools::install_github("ropensci/bib2df")
 
 Version 0.2 is now available on **CRAN**:
 
@@ -58,3 +58,5 @@ Community Guidelines
 --------------------
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
