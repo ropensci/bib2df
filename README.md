@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df) [![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df) [![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html) [![codecov](https://codecov.io/gh/ottlngr/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ottlngr/bib2df) [![](https://badges.ropensci.org/124_status.svg)](https://github.com/ropensci/onboarding/issues/124)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df) [![Travis-CI Build Status](https://travis-ci.org/ropensci/bib2df.svg?branch=master)](https://travis-ci.org/ropensci/bib2df) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ottlngr/bib2df?branch=master&svg=true)](https://ci.appveyor.com/project/ottlngr/bib2df) [![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html) [![codecov](https://codecov.io/gh/ropensci/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/bib2df) [![](https://badges.ropensci.org/124_status.svg)](https://github.com/ropensci/onboarding/issues/124)
 
 `bib2df` - Parse a BibTeX file to a tibble
 ------------------------------------------
@@ -48,7 +48,7 @@ Installation
 
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:
 
-    devtools::install_github("ottlngr/bib2df")
+    devtools::install_github("ropensci/bib2df")
 
 Version 0.2 is now available on **CRAN**:
 
@@ -58,3 +58,6 @@ Community Guidelines
 --------------------
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+------------------------------------------
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
