@@ -1,3 +1,9 @@
+# bib2df 1.0.0
+
+* This package version went successfully through the `rOpenSci` onboarding process.
+* The package now support AppVeyor builds.
+* This version contains aditional unit tests.
+
 # bib2df 0.2.2
 
 * Changes due to the ropensci review process:
