@@ -162,4 +162,4 @@ The just written BibTeX file of course contains the values, we just changed in t
 
 To append BibTeX entries to an existing file use `append = TRUE` within `df2bib()`. 
 
-[^1]: <https://cran.r-project.org/web/packages/humaniformat/index.html>
+[^1]: <https://CRAN.R-project.org/package=humaniformat>
