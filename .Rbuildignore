@@ -5,6 +5,5 @@ cran-comments.md
 ^README-.*\.png$
 ^README\.md$
 ^\.travis\.yml$
-^NEWS\.md$
 ^CONDUCT\.md$
 ^appveyor\.yml$
