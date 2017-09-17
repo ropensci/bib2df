@@ -7,3 +7,4 @@ cran-comments.md
 ^\.travis\.yml$
 ^NEWS\.md$
 ^CONDUCT\.md$
+^appveyor\.yml$
