@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df) [![Travis-CI Build Status](https://travis-ci.org/ottlngr/bib2df.svg?branch=master)](https://travis-ci.org/ottlngr/bib2df) [![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html) [![codecov](https://codecov.io/gh/ottlngr/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ottlngr/bib2df) [![](https://badges.ropensci.org/124_status.svg)](https://github.com/ropensci/onboarding/issues/124)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df) [![Travis-CI Build Status](https://travis-ci.org/ropensci/bib2df.svg?branch=master)](https://travis-ci.org/ropensci/bib2df) [![Build status](https://ci.appveyor.com/api/projects/status/6k3q7272ddnjh20o?svg=true)](https://ci.appveyor.com/project/ottlngr/bib2df) [![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html) [![codecov](https://codecov.io/gh/ropensci/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/bib2df) [![](https://badges.ropensci.org/124_status.svg)](https://github.com/ropensci/onboarding/issues/124)
 
 
 
@@ -56,7 +56,7 @@ The latest version of `bib2df` can be installed from GitHub using `devtools::ins
 devtools::install_github("ottlngr/bib2df")
 ```
 
-Version 0.2 is now available on **CRAN**:
+Version 1.0.0 is now available on **CRAN**:
 
 ```
 install.packages("bib2df")
@@ -65,3 +65,6 @@ install.packages("bib2df")
 ## Community Guidelines
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+------------------------------------------
+[![ropensci_footer](./ropensci_footer.png)](https://ropensci.org)
