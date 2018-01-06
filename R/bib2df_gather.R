@@ -10,7 +10,12 @@ bib2df_gather <- function(bib) {
   if (!length(from)) {
     return(empty)
   }
-  itemslist <- mapply(function(x, y) return(bib[x:y]), x = from, y = to - 1)
+  itemslist <- mapply(
+    function(x, y) return(bib[x:y]),
+    x = from,
+    y = to - 1,
+    SIMPLIFY = FALSE
+    )
   keys <- lapply(itemslist,
                  function(x) {
                    str_extract(x[1], "(?<=@\\w{1,50}\\{)((.*)){1}(?=,)")
@@ -73,7 +78,7 @@ bib2df_gather <- function(bib) {
                    }
   )
   values <- lapply(values, trimws)
-  items <- mapply(cbind, categories, values)
+  items <- mapply(cbind, categories, values, SIMPLIFY = FALSE)
   items <- lapply(items,
                   function(x) {
                     x <- cbind(toupper(x[, 1]), x[, 2])
@@ -87,7 +92,7 @@ bib2df_gather <- function(bib) {
   items <- mapply(function(x, y) {
     rbind(x, c("CATEGORY", y))
     },
-    x = items, y = fields)
+    x = items, y = fields, SIMPLIFY = FALSE)
   items <- lapply(items, t)
   items <- lapply(items,
                   function(x) {
