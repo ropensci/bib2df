@@ -5,7 +5,7 @@
 #' @importFrom stats complete.cases
 
 bib2df_gather <- function(bib) {
-  from <- which(!is.na(str_match(bib, "@")))
+  from <- which(!is.na(str_match(bib, "^@")))
   to  <- c(from[-1], length(bib))
   if (!length(from)) {
     return(empty)
