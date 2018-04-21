@@ -4,12 +4,12 @@
 \alias{df2bib}
 \title{Export a BibTeX \code{tibble} to a .bib file}
 \usage{
-df2bib(x, file, append = FALSE)
+df2bib(x, file = "", append = FALSE)
 }
 \arguments{
-\item{x}{\code{tibble}, returned by \code{\link{df2bib}}.}
+\item{x}{\code{tibble}, in the format as returned by \code{\link{bib2df}}.}
 
-\item{file}{character, path to a .bib file.}
+\item{file}{character, file path to write the .bib file. An empty character string writes to \code{stdout} (default).}
 
 \item{append}{logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.}
 }

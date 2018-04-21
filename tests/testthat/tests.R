@@ -67,7 +67,7 @@ test_that("bib2df() throws error messages", {
   expect_error(bib2df("/a/n/y/where/any.bib"),
                "Invalid file path: File is not readable.",
                fixed = TRUE)
-  expect_error(bib2df("https://www.ottlngr.de/data/x.bib"),
+  expect_error(bib2df("https://www.example.com/data/x.bib"),
                "Invalid URL: File is not readable.",
                fixed = TRUE)
 })
