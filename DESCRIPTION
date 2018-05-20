@@ -4,10 +4,11 @@ Title: Parse a BibTeX File to a data.frame
 Version: 1.0.0
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"),
-             person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"))
+             person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"),
+             person("Paul", "Egeler", email = "paulegeler@gmail.com", role = "ctb"))
 Description: Parse a BibTeX file to a data.frame to make it accessible for further analysis and visualization.
-URL: https://github.com/ottlngr/bib2df
-BugReports: http://github.com/ottlngr/bib2df/issues
+URL: https://github.com/ropensci/bib2df
+BugReports: http://github.com/ropensci/bib2df/issues
 License: GPL-3
 LazyData: TRUE
 Imports:

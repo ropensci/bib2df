@@ -1,7 +1,7 @@
 #' @title Export a BibTeX \code{tibble} to a .bib file
 #' @description The BibTeX \code{tibble} is written to a .bib file
-#' @param x \code{tibble}, returned by \code{\link{df2bib}}.
-#' @param file character, path to a .bib file.
+#' @param x \code{tibble}, in the format as returned by \code{\link{bib2df}}.
+#' @param file character, file path to write the .bib file. An empty character string writes to \code{stdout} (default).
 #' @param append logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
@@ -19,18 +19,18 @@
 #' df2bib(bib, bibFile, append = TRUE)
 #' @seealso \code{\link{bib2df}}
 #' @export
-df2bib <- function(x, file, append = FALSE) {
+df2bib <- function(x, file = "", append = FALSE) {
 
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
-  if (as.numeric(file.access(dirname(file), mode = 2)) != 0) {
+  if (as.numeric(file.access(dirname(file), mode = 2)) != 0 && file != "") {
     stop("Invalid file path: File is not writeable.", call. = FALSE)
   }
 
-  if (class(x$AUTHOR[[1]]) == "data.frame") {
-    x$AUTHOR <- lapply(x$AUTHOR, na_replace)
-    x$AUTHOR <- lapply(x$AUTHOR,
+  if (any({df_elements <- sapply(x$AUTHOR, inherits, "data.frame")})) {
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], na_replace)
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements],
                        function(x) {
                          paste(x$last_name,
                                ", ",
@@ -40,7 +40,7 @@ df2bib <- function(x, file, append = FALSE) {
                                sep = "")
                          }
                        )
-    x$AUTHOR <- lapply(x$AUTHOR, trimws)
+    x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], trimws)
   }
 
   names(x) <- capitalize(names(x))
