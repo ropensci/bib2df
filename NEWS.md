@@ -1,3 +1,10 @@
+# bib2df 1.0.1
+
+* This package versions fixes some issues:
+    * `bib2df()` can now read `.bib` files with a single entry
+    * `bib2df()` now allows `@` symbol within titles
+* This version will be published on CRAN since version 1.0.0 had beed removed from CRAN due to check errors.
+
 # bib2df 1.0.0
 
 * This package version went successfully through the `rOpenSci` onboarding process.
