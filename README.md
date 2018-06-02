@@ -24,7 +24,7 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 
 ``` r
 library(bib2df)
-path <- system.file("extdata", "biblio.bib", package = "bib2df")
+path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
 bib <- bib2df(path)
 bib
 #> # A tibble: 3 x 26
@@ -47,7 +47,7 @@ Installation
 
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:
 
-    devtools::install_github("ottlngr/bib2df")
+    devtools::install_github("ropensci/bib2df")
 
 Version 1.0.1 is now available on **CRAN**:
 
