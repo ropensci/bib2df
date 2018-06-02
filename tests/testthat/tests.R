@@ -1,6 +1,6 @@
 context("Import .bib to tibble")
 
-bib <- bib2df(system.file("extdata", "biblio.bib", package = "bib2df"))
+bib <- bib2df(system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df"))
 
 test_that("bib imported as tibble", {
   expect_true(inherits(bib, "tbl"))
@@ -17,7 +17,7 @@ test_that("bib has correct dimensions", {
 
 context("Import .bib with one entry to tibble")
 
-bib1 <- bib2df(system.file("extdata", "biblio_one_entry.bib", package = "bib2df"))
+bib1 <- bib2df(system.file("extdata", "bib2df_testfile_2.bib", package = "bib2df"))
 
 test_that("bib imported as tibble", {
   expect_true(inherits(bib1, "tbl"))
@@ -75,4 +75,12 @@ test_that("bib2df() throws error messages", {
 test_that("bib2df() returns 'empty' data.frame", {
   write("", t <- tempfile())
   expect_true(identical(bib2df(t), bib2df:::empty))
+})
+
+context("Allow symbols in fields, especially @ and =")
+
+test_that("bib2df() allows '@' and '=' in fields", {
+  bib <- bib2df(system.file("extdata", "bib2df_testfile_1.bib", package = "bib2df"))
+  expect_true(identical(bib$TITLE[1], "The C@C60 endohedral complex"))
+  expect_true(identical(bib$ABSTRACT[1], "Foo bar (F-st = 0.81, P < 0.001) bla bla."))
 })
