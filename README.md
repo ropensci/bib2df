@@ -28,17 +28,16 @@ path <- system.file("extdata", "biblio.bib", package = "bib2df")
 bib <- bib2df(path)
 bib
 #> # A tibble: 3 x 26
-#>       CATEGORY              BIBTEXKEY  ADDRESS ANNOTE    AUTHOR
-#>          <chr>                  <chr>    <chr>  <chr>    <list>
-#> 1      ARTICLE            Binmore2008     <NA>   <NA> <chr [1]>
-#> 2         BOOK            Osborne1994     <NA>   <NA> <chr [2]>
-#> 3 INCOLLECTION BrandenburgerDekel1989 New York   <NA> <chr [2]>
-#> # ... with 21 more variables: BOOKTITLE <chr>, CHAPTER <chr>,
-#> #   CROSSREF <chr>, EDITION <chr>, EDITOR <list>, HOWPUBLISHED <chr>,
-#> #   INSTITUTION <chr>, JOURNAL <chr>, KEY <chr>, MONTH <chr>, NOTE <chr>,
-#> #   NUMBER <chr>, ORGANIZATION <chr>, PAGES <chr>, PUBLISHER <chr>,
-#> #   SCHOOL <chr>, SERIES <chr>, TITLE <chr>, TYPE <chr>, VOLUME <chr>,
-#> #   YEAR <dbl>
+#>   CATEGORY  BIBTEXKEY  ADDRESS ANNOTE AUTHOR BOOKTITLE    CHAPTER CROSSREF
+#>   <chr>     <chr>      <chr>   <chr>  <list> <chr>        <chr>   <chr>   
+#> 1 ARTICLE   Binmore20… <NA>    <NA>   <chr … <NA>         <NA>    <NA>    
+#> 2 BOOK      Osborne19… <NA>    <NA>   <chr … <NA>         <NA>    <NA>    
+#> 3 INCOLLEC… Brandenbu… New Yo… <NA>   <chr … The Economi… 3       <NA>    
+#> # ... with 18 more variables: EDITION <chr>, EDITOR <list>,
+#> #   HOWPUBLISHED <chr>, INSTITUTION <chr>, JOURNAL <chr>, KEY <chr>,
+#> #   MONTH <chr>, NOTE <chr>, NUMBER <chr>, ORGANIZATION <chr>,
+#> #   PAGES <chr>, PUBLISHER <chr>, SCHOOL <chr>, SERIES <chr>, TITLE <chr>,
+#> #   TYPE <chr>, VOLUME <chr>, YEAR <dbl>
 ```
 
 The `df2bib()` function makes it possible to write this `tibble` back to disk, enabling programmatic manipulation of a .bib file.
