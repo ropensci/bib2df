@@ -21,7 +21,7 @@ The BibTeX \code{tibble} is written to a .bib file
 }
 \examples{
 # Read from .bib file:
-path <- system.file("extdata", "biblio.bib", package = "bib2df")
+path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
 bib <- bib2df(path)
 
 # Write to .bib file:
