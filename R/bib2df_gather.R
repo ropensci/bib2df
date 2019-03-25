@@ -5,8 +5,8 @@
 #' @importFrom stats complete.cases
 
 bib2df_gather <- function(bib) {
-  from <- which(!is.na(str_match(bib, "^@")))
-  to  <- c(from[-1], length(bib))
+  from <- which(str_extract(bib, "[:graph:]") == "@")
+  to  <- c(from[-1] - 1, length(bib))
   if (!length(from)) {
     return(empty)
   }
@@ -18,21 +18,23 @@ bib2df_gather <- function(bib) {
     )
   keys <- lapply(itemslist,
                  function(x) {
-                   str_extract(x[1], "(?<=@\\w{1,50}\\{)((.*)){1}(?=,)")
+                   str_extract(x[1], "(?<=\\{)[^,]+")
                  }
   )
   fields <- lapply(itemslist,
                    function(x) {
-                     str_extract(x[1], "(?<=@).*(?=\\{)")
+                     str_extract(x[1], "(?<=@)[^\\{]+")
                    }
   )
   fields <- lapply(fields, toupper)
+
   categories <- lapply(itemslist,
                        function(x) {
-                         str_extract(x, ".+?(?==)")
+                         str_extract(x, "[:graph:]+")
                        }
   )
-  categories <- lapply(categories, trimws)
+
+  # categories <- lapply(categories, trimws)
 
   dupl <- sum(
     unlist(
@@ -93,6 +95,7 @@ bib2df_gather <- function(bib) {
     rbind(x, c("CATEGORY", y))
     },
     x = items, y = fields, SIMPLIFY = FALSE)
+
   items <- lapply(items, t)
   items <- lapply(items,
                   function(x) {

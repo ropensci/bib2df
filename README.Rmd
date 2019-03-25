@@ -53,7 +53,7 @@ The `df2bib()` function makes it possible to write this `tibble` back to disk, e
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:
 
 ```
-devtools::install_github("ottlngr/bib2df")
+devtools::install_github("ropensci/bib2df")
 ```
 
 Version 1.0.1 is now available on **CRAN**:
