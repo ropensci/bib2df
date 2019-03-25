@@ -41,9 +41,9 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 
 ```{r, warning=FALSE}
 library(bib2df)
-path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
-bib <- bib2df(path)
-bib
+url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
+df <- bib2df(url)
+df
 ```
 
 The `df2bib()` function makes it possible to write this `tibble` back to disk, enabling programmatic manipulation of a .bib file.
@@ -64,7 +64,7 @@ install.packages("bib2df")
 
 ## Community Guidelines
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ------------------------------------------
 [![ropensci_footer](./ropensci_footer.png)](https://ropensci.org)
