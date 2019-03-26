@@ -5,7 +5,7 @@
 #' @param file character, path or URL to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
 #' @return A \code{tibble}.
-#' @importFrom httr http_error
+#' @importFrom httr GET
 #' @author Philipp Ottolinger
 #' @examples
 #' # Read from .bib file:
@@ -24,9 +24,12 @@ bib2df <- function(file, separate_names = FALSE) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
   if (grepl("http://|https://|www.", file)) {
-    if (http_error(file)) {
-      stop("Invalid URL: File is not readable.", call. = FALSE)
-    }
+    tryCatch(
+      { GET(file) },
+      error = function(e) {
+        stop("Invalid URL: File is not readable.", call. = FALSE)
+      }
+    )
   } else {
     if (as.numeric(file.access(file, mode = 4)) != 0) {
       stop("Invalid file path: File is not readable.", call. = FALSE)

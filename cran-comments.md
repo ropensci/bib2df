@@ -1,6 +1,6 @@
 ## Test environments
 
-* local Ubuntu 16.04, R 3.4.4, via
+* local Ubuntu 18.04, R 3.4.4, via
 * Travis-CI
 * AppVeyor
 * win-builder
@@ -10,19 +10,12 @@
 Status: 0 errors | 0 warnings | 1 notes
 
 ```
-The Title field should be in title case, current version then in title case:
-‘Parse a BibTeX File to a data.frame’
-‘Parse a BibTeX File to a Data.frame’
+Non-standard file/directory found at top level:
+    ‘CODE_OF_CONDUCT.md’
 ```
 
-I ignore this NOTE as `data.frame` is an established term.
+I ignore this NOTE as it conforms to the rOpenSci packaging guidelines.
 
-## New Submission
+## Resubmission
 
-New submission
-
-Package was archived on CRAN
-
-CRAN repository db overrides:
-  X-CRAN-Comment: Archived on 2018-01-27 as check problems were not
-    corrected despite reminders.
+Resubmission due to failing unit tests: https://cran.r-project.org/web/checks/check_results_bib2df.html

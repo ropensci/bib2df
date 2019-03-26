@@ -65,7 +65,7 @@ head(df$AUTHOR)
 Multiple BibTeX files can be parsed using `lapply()`. The paths to the BibTeX files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `tibble`, which can be bound, e.g. using `bind_rows()`:
 
 ```{r}
-paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://raw.githubusercontent.com/ottlngr/bib2df/master/inst/extdata/biblio.bib")
+paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://gist.githubusercontent.com/ottlngr/9ea51906271d117318223ad233539951/raw/69d35eb699d7b7838d1a455fe3cdab3224b851c0/r-base-citation.bib")
 
 x <- lapply(paths, bib2df)
 class(x)

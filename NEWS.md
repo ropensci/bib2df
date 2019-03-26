@@ -1,3 +1,8 @@
+# bib2df 1.1.0
+
+* This version fixes failing unit tests on CRAN.
+* This version will be published on CRAN.
+
 # bib2df 1.0.1
 
 * This package versions fixes some issues:

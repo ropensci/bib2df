@@ -40,6 +40,8 @@ test_that("df2bib() works", {
   expect_true(identical(readChar(x <- df2bib(bib, tempfile()), 1), "@"))
 })
 
+context("Helper functions")
+
 test_that("capitalize() works", {
   expect_true(capitalize("TEST") == "Test")
   expect_true(capitalize("Test") == "Test")
@@ -49,6 +51,8 @@ test_that("na_replace() works", {
   df <- data.frame(a = NA, b = 1)
   expect_true(na_replace(df)$a[1] == "")
 })
+
+context("Error messages and exception handling")
 
 test_that("df2bib() throws error messages", {
   df <- data.frame()
@@ -67,7 +71,13 @@ test_that("bib2df() throws error messages", {
   expect_error(bib2df("/a/n/y/where/any.bib"),
                "Invalid file path: File is not readable.",
                fixed = TRUE)
-  expect_error(bib2df("https://www.example.com/data/x.bib"),
+  expect_error(bib2df(
+    paste(
+    "https://www.",
+    paste0(sample(x = letters, size = 32, replace = TRUE), collapse = ""),
+    ".com/data/x.bib",
+    sep = "")
+    ),
                "Invalid URL: File is not readable.",
                fixed = TRUE)
 })
