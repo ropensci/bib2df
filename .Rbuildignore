@@ -1,6 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 cran-comments.md
+CODE_OF_CONDUCT.md
 ^README\.Rmd$
 ^README-.*\.png$
 ^README\.md$

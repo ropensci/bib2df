@@ -7,14 +7,7 @@
 
 ## R CMD check results
 
-Status: 0 errors | 0 warnings | 1 notes
-
-```
-Non-standard file/directory found at top level:
-    ‘CODE_OF_CONDUCT.md’
-```
-
-I ignore this NOTE as it conforms to the rOpenSci packaging guidelines.
+Status: 0 errors | 0 warnings | 0notes
 
 ## Resubmission
 
