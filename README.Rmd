@@ -58,11 +58,9 @@ The latest version of `bib2df` can be installed from GitHub using `devtools::ins
 devtools::install_github("ropensci/bib2df")
 ```
 
-Version 1.0.1 is now available on **CRAN**:
+~~Version 1.0.1 is now available on **CRAN**:~~
 
-```
-install.packages("bib2df")
-```
+`bib2df` is currently not on CRAN, but will be resubmitted.
 
 ## Community Guidelines
 

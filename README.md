@@ -1,40 +1,33 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
-
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bib2df)](https://cran.r-project.org/package=bib2df) [![Travis-CI Build Status](https://travis-ci.org/ropensci/bib2df.svg?branch=master)](https://travis-ci.org/ropensci/bib2df) [![Build status](https://ci.appveyor.com/api/projects/status/6k3q7272ddnjh20o?svg=true)](https://ci.appveyor.com/project/ottlngr/bib2df) [![](http://cranlogs.r-pkg.org/badges/bib2df)](http://cran.rstudio.com/web/packages/bib2df/index.html) [![codecov](https://codecov.io/gh/ropensci/bib2df/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/bib2df) [![](https://badges.ropensci.org/124_status.svg)](https://github.com/ropensci/onboarding/issues/124)
 
-
-
-
-
-## `bib2df` - Parse a BibTeX file to a tibble
+`bib2df` - Parse a BibTeX file to a tibble
+------------------------------------------
 
 Everyone writing reports and articles with LaTeX has probably used BibTeX before. BibTeX is the de facto standard for reference management and grounds its functionality on a list of references stored in local text file. Depending on the reference type, several fields are necessary to define a reference properly. An exemplary BibTeX entry looks as follows:
 
-```
-@Article{Binmore2008,
-  Title = {Do Conventions Need to Be Common Knowledge?},
-  Author = {Binmore, Ken},
-  Journal = {Topoi},
-  Year = {2008},
-  Number = {1},
-  Pages = {17--27},
-  Volume = {27}
-}
-```
+    @Article{Binmore2008,
+      Title = {Do Conventions Need to Be Common Knowledge?},
+      Author = {Binmore, Ken},
+      Journal = {Topoi},
+      Year = {2008},
+      Number = {1},
+      Pages = {17--27},
+      Volume = {27}
+    }
 
-## Parse the BibTeX file to a tibble
+Parse the BibTeX file to a tibble
+---------------------------------
 
 The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` (or `tibble`) and `bib2df` offers a straightforward framework to parse a BibTeX file to a `tibble`.
 
-
-
-```r
+``` r
 library(bib2df)
-url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
-df <- bib2df(url)
+
+path <- system.file("extdata", "LiteratureOnCommonKnowledgeInGameTheory.bib", package = "bib2df")
+
+df <- bib2df(path)
 df
 #> # A tibble: 37 x 27
 #>    CATEGORY BIBTEXKEY ADDRESS ANNOTE AUTHOR BOOKTITLE CHAPTER CROSSREF
@@ -49,7 +42,7 @@ df
 #>  8 ARTICLE  Binmore2… <NA>    <NA>   <chr … <NA>      <NA>    <NA>    
 #>  9 ARTICLE  Brandenb… <NA>    <NA>   <chr … <NA>      <NA>    <NA>    
 #> 10 INCOLLE… Brandenb… New Yo… <NA>   <chr … The Econ… 3       <NA>    
-#> # ... with 27 more rows, and 19 more variables: EDITION <chr>,
+#> # … with 27 more rows, and 19 more variables: EDITION <chr>,
 #> #   EDITOR <list>, HOWPUBLISHED <chr>, INSTITUTION <chr>, JOURNAL <chr>,
 #> #   KEY <chr>, MONTH <chr>, NOTE <chr>, NUMBER <chr>, ORGANIZATION <chr>,
 #> #   PAGES <chr>, PUBLISHER <chr>, SCHOOL <chr>, SERIES <chr>, TITLE <chr>,
@@ -58,23 +51,22 @@ df
 
 The `df2bib()` function makes it possible to write this `tibble` back to disk, enabling programmatic manipulation of a .bib file.
 
-## Installation
+Installation
+------------
 
 The latest version of `bib2df` can be installed from GitHub using `devtools::install_github()`:
 
-```
-devtools::install_github("ropensci/bib2df")
-```
+    devtools::install_github("ropensci/bib2df")
 
-Version 1.0.1 is now available on **CRAN**:
+~~Version 1.0.1 is now available on **CRAN**:~~
 
-```
-install.packages("bib2df")
-```
+`bib2df` is currently not on CRAN, but will be resubmitted.
 
-## Community Guidelines
+Community Guidelines
+--------------------
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-------------------------------------------
-[![ropensci_footer](./ropensci_footer.png)](https://ropensci.org)
+------------------------------------------------------------------------
+
+[![ropensci\_footer](./ropensci_footer.png)](https://ropensci.org)
