@@ -11,12 +11,14 @@
 #' path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
 #' bib <- bib2df(path)
 #'
+#'\dontrun{
 #' # Write to .bib file:
 #' bibFile <- tempfile()
 #' df2bib(bib, bibFile)
 #'
 #' # Use `append = TRUE` to add lines to an existing .bib file:
 #' df2bib(bib, bibFile, append = TRUE)
+#' }
 #' @seealso \code{\link{bib2df}}
 #' @export
 df2bib <- function(x, file = "", append = FALSE) {
