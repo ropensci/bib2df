@@ -11,4 +11,4 @@ Status: 0 errors | 0 warnings | 0notes
 
 ## Resubmission
 
-Resubmission due to failing unit tests: https://cran.r-project.org/web/checks/check_results_bib2df.html
+Resubmission due to failing unit tests: https://cran-archive.r-project.org/web/checks/2019-04-02_check_results_bib2df.html
