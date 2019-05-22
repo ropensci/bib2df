@@ -3,11 +3,21 @@
 * local Ubuntu 18.04, R 3.4.4, via
 * Travis-CI
 * AppVeyor
-* win-builder
+* R-hub builder
 
 ## R CMD check results
 
-Status: 0 errors | 0 warnings | 0notes
+Status: 0 errors | 0 warnings | 1 notes
+
+```
+checking CRAN incoming feasibility ... NOTE
+  
+  Maintainer: 'Philipp Ottolinger <philipp@ottolinger.de>'
+  
+  New submission
+  
+  Package was archived on CRAN
+```
 
 ## Resubmission
 
