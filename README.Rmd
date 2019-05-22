@@ -41,8 +41,10 @@ The BibTeX format is not convenient for any kind of analysis or visualization. M
 
 ```{r, warning=FALSE}
 library(bib2df)
-url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
-df <- bib2df(url)
+
+path <- system.file("extdata", "LiteratureOnCommonKnowledgeInGameTheory.bib", package = "bib2df")
+
+df <- bib2df(path)
 df
 ```
 

@@ -32,7 +32,7 @@ Given this `tibble` you can manipulate entries in a familiar way and write the u
 
 ### Parse the BibTeX file
 
-To parse a BibTeX file to a `tibble` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse. If you obtain your file from an URL, use the URL as the path. 
+To parse a BibTeX file to a `tibble` you may want to use the function `bib2df()`. The first argument of `bib2df()` is the path to the file you want to parse.
 
 ```{r, eval = FALSE}
 install.packages("bib2df")
@@ -41,9 +41,9 @@ install.packages("bib2df")
 ```{r}
 library(bib2df)
 
-url <- "https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib"
+path <- system.file("extdata", "LiteratureOnCommonKnowledgeInGameTheory.bib", package = "bib2df")
 
-df <- bib2df(url)
+df <- bib2df(path)
 df
 ```
 
@@ -56,7 +56,7 @@ head(df$AUTHOR)
 The second argument of `bib2df()` is `separate_names` and calls, if `TRUE`, the functionality of the `humaniformat` [^1] package to automatically split persons' names into pieces:
 
 ```{r}
-df <- bib2df(url, separate_names = TRUE)
+df <- bib2df(path, separate_names = TRUE)
 head(df$AUTHOR)
 ```
 
@@ -65,7 +65,9 @@ head(df$AUTHOR)
 Multiple BibTeX files can be parsed using `lapply()`. The paths to the BibTeX files must be stored in a vector. Using this vector to call `bib2df()` within `lapply()` results in a list of `tibble`, which can be bound, e.g. using `bind_rows()`:
 
 ```{r}
-paths <- c("https://gist.githubusercontent.com/ottlngr/d709ab6c7de08d133435cb8c77699914/raw/153f2ec0be6d36c7dd9fa3389cc87f54ecf4da04/LiteratureOnCommonKnowledgeInGameTheory.bib", "https://gist.githubusercontent.com/ottlngr/9ea51906271d117318223ad233539951/raw/69d35eb699d7b7838d1a455fe3cdab3224b851c0/r-base-citation.bib")
+bib1 <- system.file("extdata", "LiteratureOnCommonKnowledgeInGameTheory.bib", package = "bib2df")
+bib2 <- system.file("extdata", "r.bib", package = "bib2df")
+paths <- c(bib1, bib2)
 
 x <- lapply(paths, bib2df)
 class(x)
