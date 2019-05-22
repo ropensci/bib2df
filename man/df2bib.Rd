@@ -25,11 +25,11 @@ path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
 bib <- bib2df(path)
 
 # Write to .bib file:
-bibFile <- tempfile()
-df2bib(bib, bibFile)
+# bibFile <- tempfile()
+# df2bib(bib, bibFile)
 
 # Use `append = TRUE` to add lines to an existing .bib file:
-df2bib(bib, bibFile, append = TRUE)
+# df2bib(bib, bibFile, append = TRUE)
 }
 \references{
 \url{http://www.bibtex.org/Format/}

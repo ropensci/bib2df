@@ -142,7 +142,7 @@ df$AUTHOR[[10]]
 
 Especially when single values of the parsed BibTeX file were changed it is useful to write the parsed `tibble` back to a valid BibTeX file one can use in combination with LaTeX. Just like `bib2df()` parses a BibTeX file, `df2bib()` writes a BibTeX file:
 
-```{r}
+```{r,eval=FALSE}
 newFile <- tempfile()
 df2bib(df, file = newFile)
 ```

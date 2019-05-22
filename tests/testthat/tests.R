@@ -32,13 +32,13 @@ test_that("bib has correct dimensions", {
   expect_true(ncol(bib1) >= 25L)
 })
 
-context("Export .tbl to .bib")
-
-test_that("df2bib() works", {
-  expect_true(file.exists(df2bib(bib, bib2 <- tempfile())))
-  expect_true(identical(bib, bib2df(bib2)))
-  expect_true(identical(readChar(x <- df2bib(bib, tempfile()), 1), "@"))
-})
+# context("Export .tbl to .bib")
+#
+# test_that("df2bib() works", {
+#   expect_true(file.exists(df2bib(bib, bib2 <- tempfile())))
+#   expect_true(identical(bib, bib2df(bib2)))
+#   expect_true(identical(readChar(x <- df2bib(bib, tempfile()), 1), "@"))
+# })
 
 context("Helper functions")
 
