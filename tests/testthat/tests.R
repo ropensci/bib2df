@@ -71,15 +71,7 @@ test_that("bib2df() throws error messages", {
   expect_error(bib2df("/a/n/y/where/any.bib"),
                "Invalid file path: File is not readable.",
                fixed = TRUE)
-  expect_error(bib2df(
-    paste(
-    "https://www.",
-    paste0(sample(x = letters, size = 32, replace = TRUE), collapse = ""),
-    ".com/data/x.bib",
-    sep = "")
-    ),
-               "Invalid URL: File is not readable.",
-               fixed = TRUE)
+
 })
 
 test_that("bib2df() returns 'empty' data.frame", {
