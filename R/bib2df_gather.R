@@ -5,6 +5,7 @@
 #' @importFrom stats complete.cases
 
 bib2df_gather <- function(bib) {
+
   from <- which(str_extract(bib, "[:graph:]") == "@")
   to  <- c(from[-1] - 1, length(bib))
   if (!length(from)) {
@@ -54,31 +55,13 @@ bib2df_gather <- function(bib) {
                      str_extract(x, "(?<==).*")
                    }
   )
+
   values <- lapply(values,
                    function(x) {
-                     str_extract(x, "(?![\"\\{\\s]).*")
+                     sapply(x, text_between_curly_brackets, simplify = TRUE, USE.NAMES = FALSE)
                    }
   )
-  values <- lapply(values,
-                   function(x) {
-                     gsub("?(^[\\{\"])", "", x)
-                   }
-  )
-  values <- lapply(values,
-                   function(x) {
-                     gsub("?([\\}\"]\\,$)", "", x)
-                   }
-  )
-  values <- lapply(values,
-                   function(x) {
-                     gsub("?([\\}\"]$)", "", x)
-                   }
-  )
-  values <- lapply(values,
-                   function(x) {
-                     gsub("?(\\,$)", "", x)
-                   }
-  )
+
   values <- lapply(values, trimws)
   items <- mapply(cbind, categories, values, SIMPLIFY = FALSE)
   items <- lapply(items,
