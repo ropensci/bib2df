@@ -30,7 +30,7 @@ bib2df_gather <- function(bib) {
 
   categories <- lapply(itemslist,
                        function(x) {
-                         str_extract(x, "[[:alnum:]]+")
+                         str_extract(x, "[[:alnum:]_]+")
                        }
   )
 
