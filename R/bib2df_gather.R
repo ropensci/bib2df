@@ -1,7 +1,7 @@
 #' @importFrom stringr str_match
 #' @importFrom stringr str_extract
 #' @importFrom dplyr bind_rows
-#' @importFrom dplyr as_data_frame
+#' @importFrom dplyr as_tibble
 #' @importFrom stats complete.cases
 
 bib2df_gather <- function(bib) {
@@ -95,7 +95,7 @@ bib2df_gather <- function(bib) {
                   }
   )
   dat <- bind_rows(c(list(empty), items))
-  dat <- as_data_frame(dat)
+  dat <- as_tibble(dat)
   dat$BIBTEXKEY <- unlist(keys)
   dat
 }

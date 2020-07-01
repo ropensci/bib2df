@@ -3,7 +3,7 @@
 export(bib2df)
 export(df2bib)
 importFrom(dplyr,"%>%")
-importFrom(dplyr,as_data_frame)
+importFrom(dplyr,as_tibble)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,mutate)
 importFrom(dplyr,select)
