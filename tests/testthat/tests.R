@@ -92,6 +92,8 @@ context("Issue #29")
 test_that("Issue #29", {
   bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_29.bib", package = "bib2df"))
   expect_true(identical(bib$TITLE[1], "A grammar of the {Kuku} {Yalanji} language of north {Queensland}"))
+  expect_true(identical(bib$ADDRESS[2], "Cambridge"))
+})
 
 context("Allow for tags with _ and without spaces before =")
 
