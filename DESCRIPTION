@@ -1,7 +1,7 @@
 Package: bib2df
 Type: Package
 Title: Parse a BibTeX File to a Data Frame
-Version: 1.1.1
+Version: 1.1.2
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"),
              person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"),
@@ -23,6 +23,6 @@ Suggests:
     rmarkdown,
     ggplot2,
     tidyr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Encoding: UTF-8

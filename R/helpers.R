@@ -7,3 +7,10 @@ na_replace <- function(df) {
   df[is.na(df)] <- ""
   return(df)
 }
+
+text_between_curly_brackets <- function(string) {
+  min <- min(gregexpr("\\{", string)[[1]])
+  max <- max(gregexpr("\\}", string)[[1]])
+  content <- substring(string, min + 1, max - 1)
+  return(content)
+}
