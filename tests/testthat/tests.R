@@ -108,3 +108,15 @@ test_that("bib2df() allows for _ in tab name", {
   supplied_col <- "AUTHOR_KEYWORDS"
   expect_false(any(is.na(bib[supplied_col])))
 })
+
+context("Issue #31")
+
+test_that("Issue #31", {
+  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_31.bib", package = "bib2df"))
+  expect_false(is.na(bib$AUTHOR[1]))
+  expect_false(identical(bib$AUTHOR[1], ""))
+  expect_false(is.na(bib$TITLE[1]))
+  expect_false(identical(bib$TITLE[1], ""))
+  expect_false(is.na(bib$ABSTRACT[1]))
+  expect_false(identical(bib$ABSTRACT[1], ""))
+})
