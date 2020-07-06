@@ -112,7 +112,8 @@ test_that("bib2df() allows for _ in tab name", {
 context("Issue #31")
 
 test_that("Issue #31", {
-  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_31.bib", package = "bib2df"))
+  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_31.bib", package = "bib2df"),
+                merge_lines = TRUE)
   expect_false(is.na(bib$AUTHOR[1]))
   expect_false(identical(bib$AUTHOR[1], ""))
   expect_false(is.na(bib$TITLE[1]))
