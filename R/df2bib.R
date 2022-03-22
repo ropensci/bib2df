@@ -24,7 +24,7 @@ df2bib <- function(x, file = "", append = FALSE) {
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
   }
-  if (as.numeric(file.access(dirname(file), mode = 2)) != 0 && file != "") {
+  if (as.numeric(file.access(dirname(file), mode = 2))[1] != 0 & file != "") {
     stop("Invalid file path: File is not writeable.", call. = FALSE)
   }
 
@@ -52,7 +52,7 @@ df2bib <- function(x, file = "", append = FALSE) {
       if (is.list(f)) {
         f <- unlist(f)
       }
-      rowfields[[i]] <- if (!length(f) || is.na(f)) {
+      rowfields[[i]] <- if (!length(f) | is.na(f)[1]) {
           character(0L)
         } else if (names(x)[i] %in% c("Author", "Editor")) {
           paste(f, collapse = " and ")
