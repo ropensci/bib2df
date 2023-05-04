@@ -18,7 +18,7 @@
 #' str(bib)
 #' @seealso \code{\link{df2bib}}
 #' @export
-bib2df <- function(file, separate_names = FALSE) {
+bib2df <- function(file, separate_names = FALSE, merge_lines = FALSE) {
 
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
@@ -38,6 +38,7 @@ bib2df <- function(file, separate_names = FALSE) {
 
 
   bib <- bib2df_read(file)
+  if(merge_lines == TRUE){bib <- bib2df_merge_lines(bib)}
   bib <- bib2df_gather(bib)
   bib <- bib2df_tidy(bib, separate_names)
   return(bib)
