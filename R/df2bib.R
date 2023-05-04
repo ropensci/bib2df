@@ -5,6 +5,7 @@
 #' @param append logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
+#' @author Gianluca Baio
 #' @references \url{http://www.bibtex.org/Format/}
 #' @examples
 #' # Read from .bib file:
@@ -52,7 +53,7 @@ df2bib <- function(x, file = "", append = FALSE) {
       if (is.list(f)) {
         f <- unlist(f)
       }
-      rowfields[[i]] <- if (!length(f) || is.na(f)) {
+      rowfields[[i]] <- if (!length(f) | any(is.na(f))) {
           character(0L)
         } else if (names(x)[i] %in% c("Author", "Editor")) {
           paste(f, collapse = " and ")
@@ -61,7 +62,7 @@ df2bib <- function(x, file = "", append = FALSE) {
         }
     }
     rowfields <- rowfields[lengths(rowfields) > 0]
-    rowfields <- rowfields[!names(rowfields) %in% c("Category", "Bibtexkey")]
+    rowfields <- rowfields[!names(rowfields) %in% c("CATEGORY", "BIBTEXKEY")]
     paste0("  ",
            names(rowfields),
            " = {",
@@ -70,9 +71,9 @@ df2bib <- function(x, file = "", append = FALSE) {
            collapse = ",\n")
   })
   cat(paste0("@",
-             capitalize(x$Category),
+             capitalize(x$CATEGORY),
              "{",
-             x$Bibtexkey,
+             x$BIBTEXKEY,
              ",\n",
              unlist(fields),
              "\n}\n",
