@@ -1,15 +1,18 @@
 #' @importFrom stringr str_detect
 #' @importFrom stringr str_split
 #' @importFrom stringr str_squish
-
+#' @importFrom dplyr last
+#' @importFrom stats na.omit
+#' @title Export a BibTeX \code{tibble} to a .bib file
+#' @description The BibTeX \code{tibble} is written to a .bib file
+#' @param bib a \code{tibble}, in the format as returned by \code{\link{bib2df}}.
+#' @return \code{file} as a character string, invisibly.
+#' @references \url{http://www.bibtex.org/Format/}
+#' @noRd
 
 bib2df_merge_lines <- function(bib){
 
   # The function identifies entries that span several lines and merges them
-
-  # ---- Load dependencies ----
-  library(stringr)
-  library(dplyr)
 
   # Identify entries that contain linebreaks
   lines_wo_end <- !str_detect(bib, "\\}$|\\},$") & !str_detect(bib, "@") & bib!="" & !str_detect(bib, "^%")

@@ -44,7 +44,8 @@ df2bib <- function(x, file = "", append = FALSE) {
     x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], trimws)
   }
 
-  names(x) <- capitalize(names(x))
+  #names(x) <- capitalize(names(x))
+  names(x) <- toupper(names(x))
   fields <- lapply(seq_len(nrow(x)), function(r) {
     rowfields <- rep(list(character(0)), ncol(x))
     names(rowfields) <- names(x)
@@ -55,7 +56,7 @@ df2bib <- function(x, file = "", append = FALSE) {
       }
       rowfields[[i]] <- if (!length(f) | any(is.na(f))) {
           character(0L)
-        } else if (names(x)[i] %in% c("Author", "Editor")) {
+        } else if (names(x)[i] %in% c("AUTHOR", "EDITOR")) {
           paste(f, collapse = " and ")
         } else {
           paste0(f, collapse = ", ")

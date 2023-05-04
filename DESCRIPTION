@@ -24,6 +24,6 @@ Suggests:
     rmarkdown,
     ggplot2,
     tidyr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Encoding: UTF-8

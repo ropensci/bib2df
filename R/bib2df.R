@@ -4,6 +4,7 @@
 #' @details When \code{separate_names = TRUE}, the respective columns contain a \code{data.frame} for each row. When \code{FALSE}, the respective columns contain character strings.
 #' @param file character, path or URL to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
+#' @param merge_lines logical, set to \code{FALSE} by default. If set to \code{TRUE} identifies entries that span several lines and merges them
 #' @return A \code{tibble}.
 #' @importFrom httr GET
 #' @author Philipp Ottolinger

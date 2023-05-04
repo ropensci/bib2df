@@ -10,6 +10,8 @@ bib2df(file, separate_names = FALSE, merge_lines = FALSE)
 \item{file}{character, path or URL to a .bib file.}
 
 \item{separate_names}{logical, should authors' and editors' names be separated into first and given name?}
+
+\item{merge_lines}{logical, set to \code{FALSE} by default. If set to \code{TRUE} identifies entries that span several lines and merges them}
 }
 \value{
 A \code{tibble}.

@@ -39,4 +39,6 @@ bib <- bib2df(path)
 }
 \author{
 Thomas J. Leeper
+
+Gianluca Baio
 }
