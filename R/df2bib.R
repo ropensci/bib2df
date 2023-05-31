@@ -3,6 +3,9 @@
 #' @param x \code{tibble}, in the format as returned by \code{\link{bib2df}}.
 #' @param file character, file path to write the .bib file. An empty character string writes to \code{stdout} (default).
 #' @param append logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.
+#' @param allfields logical, if \code{TRUE} (default), the resulting bib output
+#' will include all the BibTeX fields contained in the df object. If \code{FALSE}
+#' only the fields with text will be included in the resulting bib object
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
 #' @author Gianluca Baio
@@ -20,7 +23,7 @@
 #' # df2bib(bib, bibFile, append = TRUE)
 #' @seealso \code{\link{bib2df}}
 #' @export
-df2bib <- function(x, file = "", append = FALSE) {
+df2bib <- function(x, file = "", append = FALSE, allfields = TRUE) {
 
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
@@ -64,12 +67,25 @@ df2bib <- function(x, file = "", append = FALSE) {
     }
     rowfields <- rowfields[lengths(rowfields) > 0]
     rowfields <- rowfields[!names(rowfields) %in% c("CATEGORY", "BIBTEXKEY")]
-    paste0("  ",
-           names(rowfields),
-           " = {",
-           unname(unlist(rowfields)),
-           "}",
-           collapse = ",\n")
+    ######################################################################################
+    # This only uses the non-empty fields for the bib file (adds '[nzchar(rowfields)]')
+    # if 'allfields' is set to FALSE
+    if(allfields) {
+      paste0("  ",
+             names(rowfields),
+             " = {",
+             unname(unlist(rowfields)),
+             "}",
+             collapse = ",\n")
+    } else {
+      paste0("  ",
+             names(rowfields[nzchar(rowfields)]),
+             " = {",
+             unname(unlist(rowfields[nzchar(rowfields)])),
+             "}",
+             collapse = ",\n")
+    }
+    ######################################################################################
   })
   cat(paste0("@",
              capitalize(x$CATEGORY),

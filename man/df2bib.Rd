@@ -4,7 +4,7 @@
 \alias{df2bib}
 \title{Export a BibTeX \code{tibble} to a .bib file}
 \usage{
-df2bib(x, file = "", append = FALSE)
+df2bib(x, file = "", append = FALSE, allfields = TRUE)
 }
 \arguments{
 \item{x}{\code{tibble}, in the format as returned by \code{\link{bib2df}}.}
@@ -12,6 +12,10 @@ df2bib(x, file = "", append = FALSE)
 \item{file}{character, file path to write the .bib file. An empty character string writes to \code{stdout} (default).}
 
 \item{append}{logical, if \code{TRUE} the \code{tibble} will be appended to an existing file.}
+
+\item{allfields}{logical, if \code{TRUE} (default), the resulting bib output
+will include all the BibTeX fields contained in the df object. If \code{FALSE}
+only the fields with text will be included in the resulting bib object}
 }
 \value{
 \code{file} as a character string, invisibly.
