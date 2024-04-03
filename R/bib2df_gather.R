@@ -47,7 +47,7 @@ bib2df_gather <- function(bib) {
     message("Some BibTeX entries may have been dropped.
             The result could be malformed.
             Review the .bib file and make sure every single entry starts
-            with a '@'.")
+            with a '@' and that there are no duplicates entries (same key) or duplicate fields within an entry.")
   }
 
   values <- lapply(itemslist,
