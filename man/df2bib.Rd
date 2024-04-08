@@ -36,7 +36,7 @@ bib <- bib2df(path)
 # df2bib(bib, bibFile, append = TRUE)
 }
 \references{
-\url{http://www.bibtex.org/Format/}
+\url{https://www.bibtex.org/Format/}
 }
 \seealso{
 \code{\link{bib2df}}

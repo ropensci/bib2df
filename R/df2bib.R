@@ -9,7 +9,7 @@
 #' @return \code{file} as a character string, invisibly.
 #' @author Thomas J. Leeper
 #' @author Gianluca Baio
-#' @references \url{http://www.bibtex.org/Format/}
+#' @references \url{https://www.bibtex.org/Format/}
 #' @examples
 #' # Read from .bib file:
 #' path <- system.file("extdata", "bib2df_testfile_3.bib", package = "bib2df")
