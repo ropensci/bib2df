@@ -9,7 +9,7 @@ Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", ro
              person("Emilio Xavier", "Esposito", email = "emilio.esposito@gmail.com", role = "ctb"),
              person("Gianluca", "Baio", email = "g.baio@ucl.ac.uk", role = c("ctb","cre")))
 Description: Parse a BibTeX file to a data.frame to make it accessible for further analysis and visualization.
-URL: https://docs.ropensci.org/bib2df, https://github.com/ropensci/bib2df/
+URL: https://docs.ropensci.org/bib2df/, https://github.com/ropensci/bib2df/
 BugReports: https://github.com/ropensci/bib2df/issues/
 License: GPL-3
 LazyData: TRUE
