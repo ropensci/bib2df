@@ -2,12 +2,12 @@ Package: bib2df
 Type: Package
 Title: Parse a BibTeX File to a Data Frame
 Version: 1.1.2.0
-Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("aut", "cre")),
+Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "aut"),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"),
              person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"),
              person("Paul", "Egeler", email = "paulegeler@gmail.com", role = "ctb"),
              person("Emilio Xavier", "Esposito", email = "emilio.esposito@gmail.com", role = "ctb"),
-             person("Gianluca", "Baio", email = "g.baio@ucl.ac.uk", role = "ctb"))
+             person("Gianluca", "Baio", email = "g.baio@ucl.ac.uk", role = c("ctb","cre")))
 Description: Parse a BibTeX file to a data.frame to make it accessible for further analysis and visualization.
 URL: https://docs.ropensci.org/bib2df, https://github.com/ropensci/bib2df
 BugReports: http://github.com/ropensci/bib2df/issues
@@ -24,6 +24,6 @@ Suggests:
     rmarkdown,
     ggplot2,
     tidyr
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Encoding: UTF-8

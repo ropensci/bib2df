@@ -16,3 +16,29 @@ written back to a valid BibTeX file.
 To learn more about \code{bib2df}, start with the vignettes:
  \code{browseVignettes(package = "bib2df")}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://docs.ropensci.org/bib2df}
+  \item \url{https://github.com/ropensci/bib2df}
+  \item Report bugs at \url{http://github.com/ropensci/bib2df/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Gianluca Baio \email{g.baio@ucl.ac.uk} [contributor]
+
+Authors:
+\itemize{
+  \item Philipp Ottolinger \email{philipp@ottolinger.de}
+}
+
+Other contributors:
+\itemize{
+  \item Thomas Leeper \email{thosjleeper@gmail.com} [contributor]
+  \item Maëlle Salmon \email{maelle.salmon@yahoo.se} [contributor]
+  \item Paul Egeler \email{paulegeler@gmail.com} [contributor]
+  \item Emilio Xavier Esposito \email{emilio.esposito@gmail.com} [contributor]
+}
+
+}
