@@ -4,6 +4,7 @@
 #' @importFrom dplyr as_tibble
 #' @importFrom stats complete.cases
 
+
 bib2df_gather <- function(bib) {
 
   from <- which(str_extract(bib, "[:graph:]") == "@")
@@ -44,10 +45,11 @@ bib2df_gather <- function(bib) {
   )
 
   if (dupl > 0) {
-    message("Some BibTeX entries may have been dropped.
+    warning("There were issues with the syntax of the bibTeX.file.
+            Some BibTeX entries may have been dropped.
             The result could be malformed.
             Review the .bib file and make sure every single entry starts
-            with a '@'.")
+            with a '@' and that there are no duplicates entries (same key) or duplicate fields within an entry.")
   }
 
   values <- lapply(itemslist,
