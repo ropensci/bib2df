@@ -46,6 +46,30 @@ empty <- tibble::tibble(
   stringsAsFactors = FALSE
 )
 
+other_allowed_fields <- c(
+  "AFFILIATION",
+  "ABSTRACT",
+  "DOI",
+  "EID",
+  "FILE",
+  "CONTENTS",
+  "COPYRIGHT",
+  "COLLABORATOR",
+  "ISBN",
+  "ISSN",
+  "KEYWORDS",
+  "LANGUAGE",
+  "LOCATION",
+  "LCCN",
+  "MRNUMBER",
+  "PMC",
+  "PMID",
+  "PRICE",
+  "SIZE",
+  "TRANSLATOR",
+  "URL",
+  "AUTHOR_KEYWORDS"
+)
 
 #' Parse a single BibTeX entry
 #'
@@ -53,30 +77,54 @@ empty <- tibble::tibble(
 #' @importFrom stringr str_extract_all
 #' @importFrom stringr str_extract
 #' @importFrom stringr str_split_fixed
+#' @importFrom stringr str_remove
 
 parse_entry <- function(entry) {
   entry <- paste(entry, collapse = " ")
 
   category <- str_extract(entry, "(?<=@)[^\\{]+")
 
-  key <- str_extract(entry, "(?<=\\{)[^,]+")
+  key <- str_extract(entry, "(?<=\\{)[^,]*")
 
-  # Remove the leading @category, key, and trailing brace
-  fields_prep <- sub(paste0("^@", category, "\\{", key, ","), "", entry)
-  fields_prep <- sub("\\}$", "", fields_prep)
+  # remove the leading @category and key
+  fields_prep <- sub(paste0("^@", category, "\\{", key, ","), "", entry) %>%
+    trimws()
 
-  # extract fields and split on first equal sign
-  fields <- str_extract_all(entry, "(?<=[,\\s])\\w+\\s*=\\s*(\\{[^{}]*(?:\\{[^{}]*\\}[^{}]*)*\\}|\"[^\"]*\")")[[1]]
-  fields <- str_split_fixed(fields, "\\s*=\\s*", n = 2)
+  field_names <- str_extract_all(fields_prep, "\\b\\w+(?=\\s*=)")[[1]]
+  field_names <- field_names[tolower(field_names) %in% c(tolower(colnames(empty)), tolower(other_allowed_fields))]
+  values <- list()
+  # loop through each name to extract the data
+  for (i in seq_along(field_names)) {
+    name <- field_names[i]
 
+    if (i < length(field_names)){
+      next_name <- field_names[i + 1]
+      pattern <- paste0(name, '\\s*=\\s*(.+?)', "(?=", next_name, ")")
+      eoe <- FALSE
+    } else {
+      pattern <- paste0(name, '\\s*=\\s*(.+?)\\s*\\}$')
+      eoe <- TRUE
+    }
 
-  # create named vector for fields and values, removing curly braces
-  values <- fields[, 2]
+    value <- str_extract(fields_prep, pattern)
+
+    value_clean <- str_remove(value, paste0(name, '\\s*=\\s*'))
+    if (eoe) {
+      value_clean <- gsub("\\}$", "", value_clean)
+    }
+
+    values[[name]] <- value_clean
+  }
+
+  # bit of a mess here trying to clean up all that might remain
+  values <- lapply(values, trimws)
   values <- lapply(values, text_between_curly_brackets)
-  names(values) <- toupper(fields[, 1])
+  values <- lapply(values, text_between_quotes)
+  values <- lapply(values, trimws)
+  values <- lapply(values, function(x) {gsub(",$", "", x)})
 
   # combine data into a named list
-  entry_data <- c(CATEGORY = toupper(category), BIBTEXKEY = key, setNames(values, names(values)))
+  entry_data <- c(CATEGORY = toupper(category), BIBTEXKEY = key, setNames(values, toupper(names(values))))
 
   return(entry_data)
 }
