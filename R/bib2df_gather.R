@@ -76,7 +76,6 @@ other_allowed_fields <- c(
 #' @param entry (char) a BibTeX entry
 #' @importFrom stringr str_extract_all
 #' @importFrom stringr str_extract
-#' @importFrom stringr str_split_fixed
 #' @importFrom stringr str_remove
 
 parse_entry <- function(entry) {
