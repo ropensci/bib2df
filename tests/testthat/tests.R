@@ -112,12 +112,18 @@ test_that("bib2df() allows for _ in tab name", {
 context("Issue #31")
 
 test_that("Issue #31", {
-  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_31.bib", package = "bib2df"),
-                merge_lines = TRUE)
+  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_31.bib", package = "bib2df"))
   expect_false(is.na(bib$AUTHOR[1]))
   expect_false(identical(bib$AUTHOR[1], ""))
   expect_false(is.na(bib$TITLE[1]))
   expect_false(identical(bib$TITLE[1], ""))
   expect_false(is.na(bib$ABSTRACT[1]))
   expect_false(identical(bib$ABSTRACT[1], ""))
+})
+
+
+test_that("Issue #56", {
+  bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_56.bib", package = "bib2df"))
+  expect_true(identical(bib$TITLE[1], "Efficient DC Analysis of RVJ Circuits for Moment and Derivative Commutations of Interconnect Networks"))
+  expect_true(identical(bib$TITLE[2], "Do Conventions Need to Be Common Knowledge?"))
 })
