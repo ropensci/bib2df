@@ -11,7 +11,6 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr across
 #' @importFrom dplyr where
-#' @importFrom dplyr everything
 #' @importFrom humaniformat format_reverse
 #' @importFrom humaniformat format_period
 #' @importFrom humaniformat parse_names
@@ -25,7 +24,6 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
   }
 
   bib <- bib %>%
-    mutate(across(everything(), ~ trimws(.))) %>%
     mutate(across(where(~ is.character(.) & length(.) == 1), ~ ifelse(
       str_detect(., "^\\{.*\\}$"),
       str_sub(., 2, -2),
