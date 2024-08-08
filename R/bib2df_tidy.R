@@ -1,9 +1,22 @@
+#' Tidy up data frame
+#'
+#' Trims ws of all fields, removes extra braces in double bracing situations,
+#' and tidy up editor, author, and year fields.
+#'
+#' @param bib (data.frame) dataframe of .bib document
+#' @param separate_names (logical) whether to separate names in author and editor fields
+#'
 #' @importFrom dplyr "%>%"
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
+#' @importFrom dplyr across
+#' @importFrom dplyr where
+#' @importFrom dplyr everything
 #' @importFrom humaniformat format_reverse
 #' @importFrom humaniformat format_period
 #' @importFrom humaniformat parse_names
+#' @importFrom stringr str_detect
+#' @importFrom stringr str_sub
 
 bib2df_tidy <- function(bib, separate_names = FALSE) {
 
@@ -11,10 +24,18 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
     return(bib)
   }
 
+  bib <- bib %>%
+    mutate(across(everything(), ~ trimws(.))) %>%
+    mutate(across(where(~ is.character(.) & length(.) == 1), ~ ifelse(
+      str_detect(., "^\\{.*\\}$"),
+      str_sub(., 2, -2),
+      .
+    )))
+
   AUTHOR <- EDITOR <- YEAR <- CATEGORY <- NULL
   if ("AUTHOR" %in% colnames(bib)) {
     bib <- bib %>%
-      mutate(AUTHOR = strsplit(AUTHOR, " and ", fixed = TRUE))
+      mutate(AUTHOR = ifelse(!is.na(AUTHOR), strsplit(AUTHOR, " and ", fixed = TRUE), NA))
     if (separate_names) {
       bib$AUTHOR <- lapply(bib$AUTHOR, function(x) x %>%
                              format_reverse() %>%
@@ -24,7 +45,7 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
   }
   if ("EDITOR" %in% colnames(bib)) {
     bib <- bib %>%
-      mutate(EDITOR = strsplit(EDITOR, " and ", fixed = TRUE))
+      mutate(EDITOR = ifelse(!is.na(EDITOR), strsplit(EDITOR, " and ", fixed = TRUE), NA))
     if (separate_names) {
       bib$EDITOR <- lapply(bib$EDITOR, function(x) x %>%
                              format_reverse() %>%
