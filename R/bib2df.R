@@ -4,7 +4,6 @@
 #' @details When \code{separate_names = TRUE}, the respective columns contain a \code{data.frame} for each row. When \code{FALSE}, the respective columns contain character strings.
 #' @param file character, path or URL to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
-#' @param merge_lines logical, set to \code{FALSE} by default. If set to \code{TRUE} identifies entries that span several lines and merges them
 #' @return A \code{tibble}.
 #' @importFrom httr GET
 #' @author Philipp Ottolinger
@@ -19,7 +18,7 @@
 #' str(bib)
 #' @seealso \code{\link{df2bib}}
 #' @export
-bib2df <- function(file, separate_names = FALSE, merge_lines = FALSE) {
+bib2df <- function(file, separate_names = FALSE) {
 
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
@@ -39,7 +38,7 @@ bib2df <- function(file, separate_names = FALSE, merge_lines = FALSE) {
 
 
   bib <- bib2df_read(file)
-  if(merge_lines == TRUE){bib <- bib2df_merge_lines(bib)}
+  #if(merge_lines == TRUE){bib <- bib2df_merge_lines(bib)}
   bib <- bib2df_gather(bib)
   bib <- bib2df_tidy(bib, separate_names)
   return(bib)
