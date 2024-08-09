@@ -18,7 +18,8 @@ Imports:
     lifecycle,
     stringr,
     humaniformat,
-    httr
+    httr,
+    tibble
 Suggests:
     testthat,
     knitr,

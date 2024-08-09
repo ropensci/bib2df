@@ -38,6 +38,7 @@ parse_entry <- function(entry, extra_fields) {
     trimws()
 
   other_allowed_fields <- load_non_standard()
+  empty <- load_standard_df()
 
   if (length(extra_fields) > 0){
     other_allowed_fields <- c(other_allowed_fields, extra_fields)
@@ -108,10 +109,11 @@ parse_entries <- function(bib, from, to, extra_fields) {
 #'
 #' @importFrom dplyr filter
 #' @importFrom tibble tibble
+#' @importFrom utils read.csv
 load_standard_df <- function(){
   df <- read.csv(system.file("extdata", "fields_standard.csv", package = "bib2df")) %>%
     filter(standard = TRUE)
-  empty <- tibble::tibble(!!!df$field, .rows = 0, .name_repair = ~ df$field)
+  empty <- tibble(!!!df$field, .rows = 0, .name_repair = ~ df$field)
   return(empty)
 }
 
@@ -120,6 +122,7 @@ load_standard_df <- function(){
 #'
 #' @importFrom dplyr filter
 #' @importFrom tibble tibble
+#' @importFrom utils read.csv
 load_non_standard <- function(){
   df <- read.csv(system.file("extdata", "fields_standard.csv", package = "bib2df")) %>%
     filter(standard = FALSE)
