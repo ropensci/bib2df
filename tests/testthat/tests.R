@@ -7,7 +7,7 @@ test_that("bib imported as tibble", {
 })
 
 test_that("bib has correct names", {
-  expect_true(all(names(bib2df:::empty) %in% names(bib)))
+  expect_true(all(names(bib2df:::load_standard_df()) %in% names(bib)))
 })
 
 test_that("bib has correct dimensions", {
@@ -24,7 +24,7 @@ test_that("bib imported as tibble", {
 })
 
 test_that("bib has correct names", {
-  expect_true(all(names(bib2df:::empty) %in% names(bib1)))
+  expect_true(all(names(bib2df:::load_standard_df()) %in% names(bib1)))
 })
 
 test_that("bib has correct dimensions", {
@@ -76,7 +76,7 @@ test_that("bib2df() throws error messages", {
 
 test_that("bib2df() returns 'empty' data.frame", {
   write("", t <- tempfile())
-  expect_true(identical(bib2df(t), bib2df:::empty))
+  expect_true(identical(bib2df(t), bib2df:::load_standard_df()))
 })
 
 test_that("bib2df() returns warning with unrecognized fields", {

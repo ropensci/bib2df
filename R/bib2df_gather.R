@@ -12,65 +12,11 @@ bib2df_gather <- function(bib, extra_fields) {
   to <- c(from[-1] - 1, length(bib))
 
   entries <- parse_entries(bib, from, to, extra_fields)
+  empty <- load_standard_df()
   dat <- bind_rows(c(list(empty), entries))
   dat <- as_tibble(dat)
   return(dat)
 }
-
-empty <- tibble::tibble(
-  CATEGORY = character(0L),
-  BIBTEXKEY = character(0L),
-  ADDRESS = character(0L),
-  ANNOTE = character(0L),
-  AUTHOR = character(0L),
-  BOOKTITLE = character(0L),
-  CHAPTER = character(0L),
-  CROSSREF = character(0L),
-  EDITION = character(0L),
-  EDITOR = character(0L),
-  HOWPUBLISHED = character(0L),
-  INSTITUTION = character(0L),
-  JOURNAL = character(0L),
-  KEY = character(0L),
-  MONTH = character(0L),
-  NOTE = character(0L),
-  NUMBER = character(0L),
-  ORGANIZATION = character(0L),
-  PAGES = character(0L),
-  PUBLISHER = character(0L),
-  SCHOOL = character(0L),
-  SERIES = character(0L),
-  TITLE = character(0L),
-  TYPE = character(0L),
-  VOLUME = character(0L),
-  YEAR = character(0L),
-  stringsAsFactors = FALSE
-)
-
-other_allowed_fields <- c(
-  "AFFILIATION",
-  "ABSTRACT",
-  "DOI",
-  "EID",
-  "FILE",
-  "CONTENTS",
-  "COPYRIGHT",
-  "COLLABORATOR",
-  "ISBN",
-  "ISSN",
-  "KEYWORDS",
-  "LANGUAGE",
-  "LOCATION",
-  "LCCN",
-  "MRNUMBER",
-  "PMC",
-  "PMID",
-  "PRICE",
-  "SIZE",
-  "TRANSLATOR",
-  "URL",
-  "AUTHOR_KEYWORDS"
-)
 
 #' Parse a single BibTeX entry
 #'
@@ -90,6 +36,8 @@ parse_entry <- function(entry, extra_fields) {
   # remove the leading @category and key
   fields_prep <- sub(paste0("^@", category, "\\{", key, ","), "", entry) %>%
     trimws()
+
+  other_allowed_fields <- load_non_standard()
 
   if (length(extra_fields) > 0){
     other_allowed_fields <- c(other_allowed_fields, extra_fields)
@@ -143,7 +91,7 @@ parse_entry <- function(entry, extra_fields) {
 #' @param bib (char) BibTeX doc as a string
 #' @param from (int) list of line numbers where each entry starts
 #' @param to (int) list of line numbers where each entry ends
-#'@param extra_fields (char) A list of additional fields to parse, passed from `bib2df()`
+#' @param extra_fields (char) A list of additional fields to parse, passed from `bib2df()`
 
 parse_entries <- function(bib, from, to, extra_fields) {
   if (all(is.na(from)) | all(is.na(to))) {
@@ -154,5 +102,28 @@ parse_entries <- function(bib, from, to, extra_fields) {
     parse_entry(entry, extra_fields)
   }, from, to, SIMPLIFY = FALSE)
   return(entries)
+}
+
+#' Load an empty tibble with standard fields
+#'
+#' @importFrom dplyr filter
+#' @importFrom tibble tibble
+load_standard_df <- function(){
+  df <- read.csv(system.file("extdata", "fields_standard.csv", package = "bib2df")) %>%
+    filter(standard = TRUE)
+  empty <- tibble::tibble(!!!df$field, .rows = 0, .name_repair = ~ df$field)
+  return(empty)
+}
+
+
+#' Load an empty tibble with standard fields
+#'
+#' @importFrom dplyr filter
+#' @importFrom tibble tibble
+load_non_standard <- function(){
+  df <- read.csv(system.file("extdata", "fields_standard.csv", package = "bib2df")) %>%
+    filter(standard = FALSE)
+  other_allowed_fields <- df$field
+  return(other_allowed_fields)
 }
 
