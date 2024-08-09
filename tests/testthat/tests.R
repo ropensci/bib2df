@@ -86,7 +86,7 @@ test_that("bib2df() returns warning with unrecognized fields", {
 context("Allow symbols in fields, especially @ and =")
 
 test_that("bib2df() allows '@' and '=' in fields", {
-  bib <- bib2df(system.file("extdata", "bib2df_testfile_1.bib", package = "bib2df"))
+  expect_warning(bib <- bib2df(system.file("extdata", "bib2df_testfile_1.bib", package = "bib2df")))
   expect_true(identical(bib$TITLE[1], "The C@C60 endohedral complex"))
   expect_true(identical(bib$ABSTRACT[1], "Foo bar (F-st = 0.81, P < 0.001) bla bla."))
 })
@@ -125,9 +125,19 @@ test_that("Issue #31", {
   expect_false(identical(bib$ABSTRACT[1], ""))
 })
 
+context("Issue #56")
 
 test_that("Issue #56", {
   bib <- bib2df(system.file("extdata", "bib2df_testfile_issue_56.bib", package = "bib2df"))
   expect_true(identical(bib$TITLE[1], "Efficient DC Analysis of RVJ Circuits for Moment and Derivative Commutations of Interconnect Networks"))
   expect_true(identical(bib$TITLE[2], "Do Conventions Need to Be Common Knowledge?"))
+})
+
+context("Allow passing arbitrary fields")
+
+test_that("bib2df() returns warning with unrecognized fields", {
+  df <- bib2df(system.file("extdata", "bib2df_testfile_5.bib", package = "bib2df"), extra_fields = c("bar", "baz"))
+  expect_equal("foo", df$BAR[1])
+  expect_equivalent(NA_character_, df$BAZ[1])
+  expect_equal("foo", df$BAR[2])
 })
