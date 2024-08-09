@@ -4,8 +4,11 @@
 #' @details When \code{separate_names = TRUE}, the respective columns contain a \code{data.frame} for each row. When \code{FALSE}, the respective columns contain character strings.
 #' @param file character, path or URL to a .bib file.
 #' @param separate_names logical, should authors' and editors' names be separated into first and given name?
+#' @param merge_lines logical (deprecated), This argument is deprecated as of version 1.2.0.
 #' @return A \code{tibble}.
 #' @importFrom httr GET
+#' @importFrom lifecycle deprecated
+#' @importFrom lifecycle deprecate_warn
 #' @author Philipp Ottolinger
 #' @examples
 #' # Read from .bib file:
@@ -18,7 +21,7 @@
 #' str(bib)
 #' @seealso \code{\link{df2bib}}
 #' @export
-bib2df <- function(file, separate_names = FALSE) {
+bib2df <- function(file, separate_names = FALSE, merge_lines = deprecated()) {
 
   if (!is.character(file)) {
     stop("Invalid file path: Non-character supplied.", call. = FALSE)
@@ -35,6 +38,8 @@ bib2df <- function(file, separate_names = FALSE) {
       stop("Invalid file path: File is not readable.", call. = FALSE)
     }
   }
+
+  deprecate_warn("1.2.0", "bib2df::bib2df(merge_lines = )")
 
 
   bib <- bib2df_read(file)
