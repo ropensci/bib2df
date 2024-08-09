@@ -1,16 +1,17 @@
 #' Parse and gather the BibTex entries into a data.frame
 #'
 #' @param bib (char) BibTeX doc as a string
+#' @param extra_fields (char) A list of additional fields to parse, passed from `bib2df()`
 #'
 #' @importFrom stringr str_detect
 #' @importFrom dplyr bind_rows
 #' @importFrom dplyr as_tibble
 #' @importFrom stats setNames
-bib2df_gather <- function(bib) {
+bib2df_gather <- function(bib, extra_fields) {
   from <- which(str_detect(bib, "^@"))
   to <- c(from[-1] - 1, length(bib))
 
-  entries <- parse_entries(bib, from, to)
+  entries <- parse_entries(bib, from, to, extra_fields)
   dat <- bind_rows(c(list(empty), entries))
   dat <- as_tibble(dat)
   return(dat)
@@ -74,11 +75,12 @@ other_allowed_fields <- c(
 #' Parse a single BibTeX entry
 #'
 #' @param entry (char) a BibTeX entry
+#' @param extra_fields (char) A list of additional fields to parse, passed from `bib2df()`
 #' @importFrom stringr str_extract_all
 #' @importFrom stringr str_extract
 #' @importFrom stringr str_remove
 
-parse_entry <- function(entry) {
+parse_entry <- function(entry, extra_fields) {
   entry <- paste(entry, collapse = " ")
 
   category <- str_extract(entry, "(?<=@)[^\\{]+")
@@ -88,6 +90,10 @@ parse_entry <- function(entry) {
   # remove the leading @category and key
   fields_prep <- sub(paste0("^@", category, "\\{", key, ","), "", entry) %>%
     trimws()
+
+  if (length(extra_fields) > 0){
+    other_allowed_fields <- c(other_allowed_fields, extra_fields)
+  }
 
   field_names_all <- str_extract_all(fields_prep, "\\b\\w+(?=\\s*=)")[[1]]
   field_names <- field_names_all[tolower(field_names_all) %in% c(tolower(colnames(empty)), tolower(other_allowed_fields))]
@@ -137,14 +143,15 @@ parse_entry <- function(entry) {
 #' @param bib (char) BibTeX doc as a string
 #' @param from (int) list of line numbers where each entry starts
 #' @param to (int) list of line numbers where each entry ends
+#'@param extra_fields (char) A list of additional fields to parse, passed from `bib2df()`
 
-parse_entries <- function(bib, from, to) {
+parse_entries <- function(bib, from, to, extra_fields) {
   if (all(is.na(from)) | all(is.na(to))) {
     return(list())
   }
   entries <- mapply(function(x, y) {
     entry <- bib[x:y]
-    parse_entry(entry)
+    parse_entry(entry, extra_fields)
   }, from, to, SIMPLIFY = FALSE)
   return(entries)
 }

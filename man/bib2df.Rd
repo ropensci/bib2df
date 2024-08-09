@@ -4,10 +4,17 @@
 \alias{bib2df}
 \title{Parse a BibTeX file to a \code{tibble}}
 \usage{
-bib2df(file, separate_names = FALSE, merge_lines = deprecated())
+bib2df(
+  file,
+  extra_fields = NULL,
+  separate_names = FALSE,
+  merge_lines = deprecated()
+)
 }
 \arguments{
 \item{file}{character, path or URL to a .bib file.}
+
+\item{extra_fields}{character, a list of non-standard fields to parse}
 
 \item{separate_names}{logical, should authors' and editors' names be separated into first and given name?}
 

@@ -4,10 +4,12 @@
 \alias{parse_entry}
 \title{Parse a single BibTeX entry}
 \usage{
-parse_entry(entry)
+parse_entry(entry, extra_fields)
 }
 \arguments{
 \item{entry}{(char) a BibTeX entry}
+
+\item{extra_fields}{(char) A list of additional fields to parse, passed from `bib2df()`}
 }
 \description{
 Parse a single BibTeX entry

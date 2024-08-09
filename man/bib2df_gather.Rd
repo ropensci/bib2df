@@ -4,10 +4,12 @@
 \alias{bib2df_gather}
 \title{Parse and gather the BibTex entries into a data.frame}
 \usage{
-bib2df_gather(bib)
+bib2df_gather(bib, extra_fields)
 }
 \arguments{
 \item{bib}{(char) BibTeX doc as a string}
+
+\item{extra_fields}{(char) A list of additional fields to parse, passed from `bib2df()`}
 }
 \description{
 Parse and gather the BibTex entries into a data.frame
