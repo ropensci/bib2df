@@ -89,8 +89,12 @@ parse_entry <- function(entry) {
   fields_prep <- sub(paste0("^@", category, "\\{", key, ","), "", entry) %>%
     trimws()
 
-  field_names <- str_extract_all(fields_prep, "\\b\\w+(?=\\s*=)")[[1]]
-  field_names <- field_names[tolower(field_names) %in% c(tolower(colnames(empty)), tolower(other_allowed_fields))]
+  field_names_all <- str_extract_all(fields_prep, "\\b\\w+(?=\\s*=)")[[1]]
+  field_names <- field_names_all[tolower(field_names_all) %in% c(tolower(colnames(empty)), tolower(other_allowed_fields))]
+  unlisted <- field_names_all[!(tolower(field_names_all) %in% c(tolower(colnames(empty)), tolower(other_allowed_fields)))]
+  if (length(unlisted > 0)){
+    warning(paste("The following fields were found, but are not recognized:", unlisted, ". Examine your bib file to ensure correct parsing.", collapse = ", "))
+  }
   values <- list()
   # loop through each name to extract the data
   for (i in seq_along(field_names)) {

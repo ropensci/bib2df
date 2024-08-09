@@ -79,6 +79,10 @@ test_that("bib2df() returns 'empty' data.frame", {
   expect_true(identical(bib2df(t), bib2df:::empty))
 })
 
+test_that("bib2df() returns warning with unrecognized fields", {
+  expect_warning(bib2df(system.file("extdata", "bib2df_testfile_5.bib", package = "bib2df")))
+})
+
 context("Allow symbols in fields, especially @ and =")
 
 test_that("bib2df() allows '@' and '=' in fields", {
