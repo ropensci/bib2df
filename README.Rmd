@@ -36,7 +36,7 @@ Everyone writing reports and articles with LaTeX has probably used BibTeX before
 
 ## Parse the BibTeX file to a tibble
 
-The BibTeX format is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` (or `tibble`) and `bib2df` offers a straightforward framework to parse a BibTeX file to a `tibble`.
+The [BibTeX format](https://www.bibtex.org/Format/) is not convenient for any kind of analysis or visualization. Many R applications require a `data.frame` (or `tibble`) and `bib2df` offers a straightforward framework to parse a BibTeX file to a `tibble`.
 
 
 ```{r, warning=FALSE}
@@ -49,6 +49,11 @@ df
 ```
 
 The `df2bib()` function makes it possible to write this `tibble` back to disk, enabling programmatic manipulation of a .bib file.
+
+### Extra fields
+
+The BibTeX format is extremely flexible in terms of the allowed fields, and different citation producers often include non-standard fields in BibTex documents. `bib2df` supports all of the standard fields, in addition to a number of commonly used non-standard fields. To parse a document with an unsupported field, pass `extra_fields` to `bib2df`. See `?bib2df_fields_list` for a list of supported fields.
+
 
 ## Installation
 

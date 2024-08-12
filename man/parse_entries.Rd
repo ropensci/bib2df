@@ -4,7 +4,7 @@
 \alias{parse_entries}
 \title{Parse all BibTeX entries}
 \usage{
-parse_entries(bib, from, to)
+parse_entries(bib, from, to, extra_fields)
 }
 \arguments{
 \item{bib}{(char) BibTeX doc as a string}
@@ -12,6 +12,8 @@ parse_entries(bib, from, to)
 \item{from}{(int) list of line numbers where each entry starts}
 
 \item{to}{(int) list of line numbers where each entry ends}
+
+\item{extra_fields}{(char) A list of additional fields to parse, passed from `bib2df()`}
 }
 \description{
 Parse all BibTeX entries
