@@ -10,3 +10,4 @@ CODE_OF_CONDUCT.md
 ^CONDUCT\.md$
 ^appveyor\.yml$
 ropensci_footer.png
+^cran-comments\.md$
