@@ -47,7 +47,6 @@ df2bib <- function(x, file = "", append = FALSE, allfields = TRUE) {
     x$AUTHOR[df_elements] <- lapply(x$AUTHOR[df_elements], trimws)
   }
 
-  #names(x) <- capitalize(names(x))
   names(x) <- toupper(names(x))
   fields <- lapply(seq_len(nrow(x)), function(r) {
     rowfields <- rep(list(character(0)), ncol(x))
@@ -88,7 +87,7 @@ df2bib <- function(x, file = "", append = FALSE, allfields = TRUE) {
     ######################################################################################
   })
   cat(paste0("@",
-             capitalize(x$CATEGORY),
+             tolower(x$CATEGORY),
              "{",
              x$BIBTEXKEY,
              ",\n",

@@ -1,0 +1,19 @@
+# Run r cmd check
+name: call-r-cmd-check
+# on specifies the build triggers. See more info at https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+on:
+# The default build trigger is to run the action on every push and pull request, for any branch
+  push:
+  pull_request:
+  # To run the default repository branch weekly on Sunday, uncomment the following 2 lines
+  #schedule:
+    #- cron: '0 0 * * 0'
+
+# no permissions are needed by the default github token for this workflow to 
+# run, so don't pass any.
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token
+permissions: {}
+
+jobs:
+  call-workflow:
+    uses: nmfs-ost/ghactions4r/.github/workflows/r-cmd-check.yml@main
