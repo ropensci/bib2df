@@ -6,8 +6,7 @@ CODE_OF_CONDUCT.md
 ^README\.Rmd$
 ^README-.*\.png$
 ^README\.md$
-^\.travis\.yml$
 ^CONDUCT\.md$
-^appveyor\.yml$
 ropensci_footer.png
 ^cran-comments\.md$
+^\.github$

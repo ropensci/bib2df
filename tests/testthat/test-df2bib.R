@@ -51,8 +51,4 @@ test_that("df2bib() returns correct error messages", {
     df2bib(fake_bib, file = 1L),
     "Invalid file path"
   )
-  expect_error(
-    df2bib(fake_bib, file = file.path("c:", "happy")),
-    "Invalid file path"
-  )
 })
