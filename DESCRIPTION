@@ -2,7 +2,8 @@ Package: bib2df
 Type: Package
 Title: Parse a BibTeX File to a Data Frame
 Version: 1.1.2.0
-Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "aut"),
+Authors@R: c(person(c("Kelli", "F."), "Johnson", email = "kelli.johnson@noaa.gov", role = c("aut"), comment = c(ORCID = "0000-0002-5149-451X")),
+             person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "ctb"),
              person("Thomas", "Leeper", email = "thosjleeper@gmail.com", role = "ctb"),
              person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = "ctb"),
              person("Paul", "Egeler", email = "paulegeler@gmail.com", role = "ctb"),

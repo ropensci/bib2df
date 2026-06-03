@@ -54,13 +54,13 @@ bib2df_tidy <- function(bib, separate_names = FALSE) {
   if ("YEAR" %in% colnames(bib)) {
     if (sum(is.na(as.numeric(bib$YEAR))) == 0) {
       bib <- bib %>%
-        mutate(YEAR = as.numeric(YEAR))
+        dplyr::mutate(YEAR = as.numeric(YEAR))
     } else {
       message("Column `YEAR` contains character strings.
               No coercion to numeric applied.")
     }
   }
   bib <- bib %>%
-    select(CATEGORY, dplyr::everything())
+    dplyr::select(CATEGORY, dplyr::everything())
   return(bib)
 }
