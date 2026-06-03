@@ -10,7 +10,6 @@
 bib2df_gather <- function(bib, extra_fields) {
   from <- which(str_detect(bib, "^@"))
   to <- c(from[-1] - 1, length(bib))
-
   entries <- parse_entries(bib, from, to, extra_fields)
   empty <- load_standard_df()
   dat <- bind_rows(c(list(empty), entries))
